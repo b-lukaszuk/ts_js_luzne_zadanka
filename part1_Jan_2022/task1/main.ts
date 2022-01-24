@@ -13,7 +13,7 @@ function getPeopleAtParty(howMany: number): Array<number> {
     return people;
 }
 
-function getValCounts(bDays: Array<number>): Array<number> {
+function getBDaysCounts(bDays: Array<number>): Array<number> {
     let lenBDays: number = bDays.length;
     let counts: Array<number> = getPreFilledArr1d(daysInYear, 0);
     for (let i = 0; i < lenBDays; i++) {
@@ -22,9 +22,9 @@ function getValCounts(bDays: Array<number>): Array<number> {
     return counts;
 }
 
-function anyValGTaNum(arr1d: Array<number>, valToCompare: number): boolean {
+function anyValGT(arr1d: Array<number>, GTwhat: number): boolean {
     for (let i = 0; i < arr1d.length; i++) {
-        if (arr1d[i] > valToCompare) {
+        if (arr1d[i] > GTwhat) {
             return true;
         }
     }
@@ -32,8 +32,8 @@ function anyValGTaNum(arr1d: Array<number>, valToCompare: number): boolean {
 }
 
 function anySameBDays(bDays: Array<number>): boolean {
-    let counts: Array<number> = getValCounts(bDays);
-    return anyValGTaNum(counts, 1);
+    let counts: Array<number> = getBDaysCounts(bDays);
+    return anyValGT(counts, 1);
 }
 
 function getAvg(arr1d: Array<number>): number {

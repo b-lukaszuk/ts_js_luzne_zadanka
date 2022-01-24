@@ -71,3 +71,13 @@ List of assumptions:
 ## Additional
 
 Compare performance with my Python and Haskell code to that task.
+
+### Observations
+
+On the same machine I got:
+
+1. TS/JS: 10k iters: 0.067 sec, 100k iters: 0.201 sec
+2. Python: 10k iters: 0.115 sec, 100k iters: 0.879 sec
+3. Haskell: 10k iters: 0.421 sec, 100k iters: 2.184 sec
+
+Point of notice: the code was not identical (still, it was quite similar)

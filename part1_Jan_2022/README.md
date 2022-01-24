@@ -45,7 +45,7 @@ Show and compare the computed probabilities of success for the two strategies.
 
 ## Additional
 
-Compare performance with my Python and Haskell code to that  task.
+Compare performance with my Python and Haskell code to that task.
 
 # Task 2
 
@@ -70,4 +70,4 @@ List of assumptions:
 
 ## Additional
 
-Compare performance with my Python and Haskell code to that  task.
+Compare performance with my Python and Haskell code to that task.

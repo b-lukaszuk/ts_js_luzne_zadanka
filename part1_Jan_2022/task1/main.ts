@@ -6,9 +6,9 @@ const noOfPeopleAtParty: number = 30;
 const noOfIters: number = 10000;
 
 function getPeopleAtParty(howMany: number): Array<number> {
-    let people: Array<number> = [];
+    let people: Array<number> = getPreFilledArr1d(howMany, 0);
     for (let i = 0; i < howMany; i++) {
-        people.push(randInt(0, daysInYear));
+        people[i] = randInt(0, daysInYear);
     }
     return people;
 }
@@ -44,11 +44,9 @@ function getAvg(arr1d: Array<number>): number {
 }
 
 function runNIters(nIter: number): Array<number> {
-    let result: Array<number> = [];
+    let result: Array<number> = getPreFilledArr1d(nIter, 0);
     for (let i = 0; i < nIter; i++) {
-        result.push(
-            anySameBDays(getPeopleAtParty(noOfPeopleAtParty)) ? 1 : 0
-        )
+        result[i] = anySameBDays(getPeopleAtParty(noOfPeopleAtParty)) ? 1 : 0;
     }
     return result;
 }

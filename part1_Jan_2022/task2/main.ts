@@ -49,8 +49,8 @@ function allPrisonersFooundLuckyCard(results: Array<boolean>): boolean {
     return true;
 }
 
-// returns 1 (success) | 0 (failure) of all prisoners finding lucky cards
-function run1Iter(atRandom: boolean): number {
+// returns 1 (success) | 0 (failure) for all prisoners finding lucky cards
+function run1Iter(atRandom: boolean): 0 | 1 {
     let cupboard: Array<number> = scramble(range(noOfCards));
     let results: Array<boolean> = [];
     for (let i = 0; i < noOfPrisoners; i++) {

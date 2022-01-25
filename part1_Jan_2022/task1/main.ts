@@ -1,4 +1,7 @@
-import { getArr1dPrefilledByFn, getPreFilledArr1d } from './arr1dPreFilled';
+import {
+    getArr1dPrefilledByFn,
+    getArr1dPrefilledWithNum
+} from './arr1dPreFilled';
 import randInt from './randInt';
 
 const daysInYear: number = 365;
@@ -14,7 +17,7 @@ function getPeopleAtParty(howMany: number): Array<number> {
 
 function getBDaysCounts(bDays: Array<number>): Array<number> {
     let lenBDays: number = bDays.length;
-    let counts: Array<number> = getPreFilledArr1d(daysInYear, 0);
+    let counts: Array<number> = getArr1dPrefilledWithNum(daysInYear, 0);
     for (let i = 0; i < lenBDays; i++) {
         counts[bDays[i]] += 1;
     }

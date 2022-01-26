@@ -100,4 +100,5 @@ function main(): void {
     console.log("That's all. Goodbye.");
 }
 
+// 1.2 sec for 10k iters, 10.2 sec for 100k iters
 main();

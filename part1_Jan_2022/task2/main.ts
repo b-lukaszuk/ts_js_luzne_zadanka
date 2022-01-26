@@ -10,7 +10,7 @@ const noOfIterations: number = 10000;
 
 function getNexGuess(
     prevGuess: number,
-    cards: Array<number>,
+    cards: number[],
     atRandom: boolean
 ): number {
     if (atRandom) {
@@ -23,11 +23,11 @@ function getNexGuess(
 function getGuesses(
     prisonerId: number,
     noOfGuesses: number,
-    cards: Array<number>,
+    cards: number[],
     atRandom: boolean
-): Array<number> {
+): number[] {
     let fstGuess: number = atRandom ? randInt(0, noOfCards) : cards[prisonerId];
-    let guesses: Array<number> = [fstGuess];
+    let guesses: number[] = [fstGuess];
     for (let i = 1; i < noOfGuesses; i++) {
         if (guesses[i - 1] === prisonerId) {
             break;
@@ -37,11 +37,11 @@ function getGuesses(
     return guesses;
 }
 
-function isLuckyCardFound(prisonerId: number, guesses: Array<number>): boolean {
+function isLuckyCardFound(prisonerId: number, guesses: number[]): boolean {
     return prisonerId === guesses[guesses.length - 1];
 }
 
-function allPrisonersFooundLuckyCard(results: Array<boolean>): boolean {
+function allPrisonersFooundLuckyCard(results: boolean[]): boolean {
     for (let i = 0; i < results.length; i++) {
         if (!results[i]) {
             return false;
@@ -52,8 +52,8 @@ function allPrisonersFooundLuckyCard(results: Array<boolean>): boolean {
 
 // returns 1 (success) | 0 (failure) for all prisoners finding lucky cards
 function run1Iter(atRandom: boolean): 0 | 1 {
-    let cupboard: Array<number> = scramble(range(noOfCards));
-    let results: Array<boolean> = [];
+    let cupboard: number[] = scramble(range(noOfCards));
+    let results: boolean[] = [];
     for (let i = 0; i < noOfPrisoners; i++) {
         let result: boolean = isLuckyCardFound(
             i,
@@ -65,14 +65,14 @@ function run1Iter(atRandom: boolean): 0 | 1 {
 }
 
 // array of 1's and 0's (successes or failures of single iters)
-function runNIters(noOfIters: number, atRandom: boolean): Array<number> {
-    let results: Array<number> = getArr1dPrefilledByFn(noOfIters, () => {
+function runNIters(noOfIters: number, atRandom: boolean): number[] {
+    let results: number[] = getArr1dPrefilledByFn(noOfIters, () => {
         return run1Iter(atRandom);
     });
     return results;
 }
 
-function getAvg(arr1d: Array<number>): number {
+function getAvg(arr1d: number[]): number {
     let sum: number = arr1d.reduce((acc, curVal) => {
         return acc + curVal;
     });

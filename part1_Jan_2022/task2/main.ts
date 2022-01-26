@@ -41,7 +41,7 @@ function isLuckyCardFound(prisonerId: number, guesses: number[]): boolean {
     return prisonerId === guesses[guesses.length - 1];
 }
 
-function allPrisonersFooundLuckyCard(results: boolean[]): boolean {
+function allPrisonersFoundLuckyCard(results: boolean[]): boolean {
     for (let i = 0; i < results.length; i++) {
         if (!results[i]) {
             return false;
@@ -61,7 +61,7 @@ function run1Iter(atRandom: boolean): 0 | 1 {
         );
         results.push(result);
     }
-    return allPrisonersFooundLuckyCard(results) ? 1 : 0;
+    return allPrisonersFoundLuckyCard(results) ? 1 : 0;
 }
 
 // array of 1's and 0's (successes or failures of single iters)

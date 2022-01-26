@@ -26,7 +26,8 @@ function getGuesses(
     cards: Array<number>,
     atRandom: boolean
 ): Array<number> {
-    let guesses: Array<number> = [randInt(0, noOfCards)];
+    let fstGuess: number = atRandom ? randInt(0, noOfCards) : cards[prisonerId];
+    let guesses: Array<number> = [fstGuess];
     for (let i = 1; i < noOfGuesses; i++) {
         if (guesses[i - 1] === prisonerId) {
             break;

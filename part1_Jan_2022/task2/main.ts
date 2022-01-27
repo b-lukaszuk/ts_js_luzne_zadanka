@@ -54,8 +54,9 @@ function allPrisonersFoundLuckyCard(results: boolean[]): boolean {
 function run1Iter(atRandom: boolean): 0 | 1 {
     let cupboard: number[] = scramble(range(noOfCards));
     let results: boolean[] = [];
+    let result: boolean = false;
     for (let i = 0; i < noOfPrisoners; i++) {
-        let result: boolean = isLuckyCardFound(
+        result = isLuckyCardFound(
             i,
             getGuesses(i, guessesPerPrisoner, cupboard, atRandom)
         );

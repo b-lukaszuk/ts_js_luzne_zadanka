@@ -1,4 +1,4 @@
-function getArr1dPrefilledByFn(len: number, fillFn: Function): Array<number> {
+function getArr1dPrefilledByFn(len: number, fillFn: Function): number[] {
     let result = new Array(len);
     for (let i = 0; i < len; i++) {
         result[i] = fillFn();
@@ -6,7 +6,7 @@ function getArr1dPrefilledByFn(len: number, fillFn: Function): Array<number> {
     return result;
 }
 
-function getArr1dPrefilledWithNum(len: number, fill: number): Array<number> {
+function getArr1dPrefilledWithNum(len: number, fill: number): number[] {
     let result = new Array(len);
     for (let i = 0; i < len; i++) {
         result[i] = fill;

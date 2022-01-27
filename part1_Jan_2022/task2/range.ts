@@ -6,11 +6,11 @@
  * @param {number} start first value (incl)
  * @param {number} end end value (excl)
  * @param {number} by step betw vals (always positive, even if numbers go down)
- * @returns {Array<number>} array of vals from, to, by
+ * @returns {number[]} array of vals from, to, by
  */
-function pyRange(start: number, end?: number, by?: number): Array<number> {
+function pyRange(start: number, end?: number, by?: number): number[] {
 
-    let result: Array<number> = [];
+    let result: number[] = [];
 
     if (arguments.length === 1) {
         end = start;

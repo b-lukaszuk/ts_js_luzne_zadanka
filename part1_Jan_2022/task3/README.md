@@ -1,8 +1,6 @@
 # Task 3
 
-[Go to: Table of contents](#table-of-contents)
-
-[Proper Divisors](https://rosettacode.org/wiki/Proper_divisors):
+[Proper Divisors](https://rosettacode.org/wiki/Proper_divisors)
 
 ## Description
 

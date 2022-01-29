@@ -1,7 +1,5 @@
 # Task 2
 
-[Go to: Table of contents](#table-of-contents)
-
 [100 prisoners on rosettacode webpage](https://rosettacode.org/wiki/100_prisoners)
 
 ## The Problem

@@ -99,7 +99,7 @@ possibly the other two are not optimal, but still, the differences in speed of e
 
 [Go to: Table of contents](#table-of-contents)
 
-[Proper Divisors](https://rosettacode.org/wiki/Proper_divisors):
+[Proper Divisors](https://rosettacode.org/wiki/Proper_divisors)
 
 ## Description
 
@@ -125,7 +125,7 @@ Find a number in the range 1 to 20,000 with the most proper divisors. Show the n
 
 [Go to: Table of contents](#table-of-contents)
 
-[Amicable Pairs](https://rosettacode.org/wiki/Amicable_pairs):
+[Amicable Pairs](https://rosettacode.org/wiki/Amicable_pairs)
 
 ## Description
 

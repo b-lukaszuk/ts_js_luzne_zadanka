@@ -1,7 +1,5 @@
 # Task 1
 
-[Go to: Table of contents](#table-of-contents)
-
 Inspired by: [Birthday problem on wiki](https://en.wikipedia.org/wiki/Birthday_problem)
 
 ## The problem

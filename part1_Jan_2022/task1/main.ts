@@ -41,7 +41,7 @@ function anySameBDays(bDays: number[]): boolean {
 function getAvg(arr1d: number[]): number {
     let sum: number = arr1d.reduce((acc, curVal) => {
         return acc + curVal;
-    })
+    }, 0);
     return sum / arr1d.length;
 }
 

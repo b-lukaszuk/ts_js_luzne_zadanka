@@ -5,6 +5,8 @@
 1. [Info](#info)
 2. [Task 1](#task-1)
 3. [Task 2](#task-2)
+4. [Task 3](#task-3)
+5. [Task 4](#task-4)
 
 ---
 
@@ -92,3 +94,52 @@ On the same machine I got:
 
 Point of notice: the code was not identical (still, it was quite similar),
 possibly the other two are not optimal, but still, the differences in speed of execution are quite big.
+
+# Task 3
+
+[Go to: Table of contents](#table-of-contents)
+
+[Proper Divisors](https://rosettacode.org/wiki/Proper_divisors):
+
+## Description
+
+### Basic Info
+
+The `proper divisors` of a positive integer `N` are those numbers, other than `N` itself, that divide `N` without remainder.
+
+For `N > 1` they will always include 1, but for `N == 1` there are no proper divisors.
+
+### Examples
+
+The proper divisors of 6 are 1, 2, and 3.
+The proper divisors of 100 are 1, 2, 4, 5, 10, 20, 25, and 50.
+
+
+### What to do?
+
+Create a routine to generate all the proper divisors of a number.
+use it to show the proper divisors of the numbers 1 to 10 inclusive.
+Find a number in the range 1 to 20,000 with the most proper divisors. Show the number and just the count of how many proper divisors it has.
+
+# Task 4
+
+[Go to: Table of contents](#table-of-contents)
+
+[Amicable Pairs](https://rosettacode.org/wiki/Amicable_pairs):
+
+## Description
+
+### Basic Info
+
+Two integers `N` and `M` are said to be `amicable pairs` if `N != M` and `sum(propDivs(N)) = M` as well as `sum(propDivs(M)) = N`
+
+### Example
+
+1184 and 1210 are an amicable pair, with proper divisors:
+
++ 1, 2, 4, 8, 16, 32, 37, 74, 148, 296, 592 and
++ 1, 2, 5, 10, 11, 22, 55, 110, 121, 242, 605 respectively.
+
+### What to do?
+
+Calculate and show here the Amicable pairs below 20,000; (there are eight).

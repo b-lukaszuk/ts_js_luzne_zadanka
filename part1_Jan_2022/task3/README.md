@@ -21,3 +21,7 @@ The proper divisors of 100 are 1, 2, 4, 5, 10, 20, 25, and 50.
 Create a routine to generate all the proper divisors of a number.
 use it to show the proper divisors of the numbers 1 to 10 inclusive.
 Find a number in the range 1 to 20,000 with the most proper divisors. Show the number and just the count of how many proper divisors it has.
+
+### Additional info
+
+Interesting, this TS/JS program takes ~2.35 sec to execute, analogical program written in Python takes ~9.35 sec to execute (the same device, similar code)

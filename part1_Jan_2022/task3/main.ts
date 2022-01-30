@@ -11,18 +11,32 @@ function getProperDivisors(testedNum: number): number[] {
     })
 }
 
-function displInfoPropDivOf(testedNum: number): void {
-    console.log("Proper divisors of", testedNum, "are:");
-    console.log(getProperDivisors(testedNum));
+function numOfPropDivsForNumsUpTo(upToIncl: number): number[] {
+    return range(1, upToIncl + 1).map((n) => {
+        return getProperDivisors(n).length;
+    })
+}
+
+function displInfoNumOfPropDivsUpTo(upToIncl: number): void {
+    console.log("====");
+    console.log("Calculating the number of proper divisors");
+    console.log("For numbers in range: 1 to", upToIncl);
+    console.log("PLEASE BE PATIENT THIS MAY TAKE A WHILE");
+    let noOfPropDivs: number[] = numOfPropDivsForNumsUpTo(upToIncl);
+    let maximum: number = Math.max(...noOfPropDivs);
+    // +1 since indexOf 0 indexed, and numOfPropDivsForNumsUpTo() 1 indexed
+    let whichNum: number = noOfPropDivs.indexOf(maximum) + 1;
+    console.log(whichNum, "got the greatest number, i.e.",
+        maximum, "of proper divisors")
+    console.log("====");
 }
 
 
 function main(): void {
-    console.log("Wellcome to program displaying proper divisons of numbers");
-    displInfoPropDivOf(1);
-    displInfoPropDivOf(6);
-    displInfoPropDivOf(100);
+    console.log("Wellcome to program looking for proper divisors of numbers");
+    displInfoNumOfPropDivsUpTo(20000);
     console.log("That is all. Goodbye");
 }
 
+// execution time 2.35 sec
 main();

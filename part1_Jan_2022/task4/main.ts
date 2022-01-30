@@ -1,10 +1,8 @@
-import getProperDivisors from "./propDivisors";
-import getPropDiv from "./propDivisors";
+import getPropDivs from "./propDivisors";
 import getSum from "./sum";
-import range from "./range";
 
-function getSumPropDiv(testedNum: number): number {
-    let propDivs: number[] = getPropDiv(testedNum);
+function getSumPropDivs(testedNum: number): number {
+    let propDivs: number[] = getPropDivs(testedNum);
     return getSum(propDivs);
 }
 
@@ -13,10 +11,10 @@ const conditionsFns: Function[] = [
         return num1 !== num2;
     },
     (num1, num2) => {
-        return getSumPropDiv(num1) === num2;
+        return getSumPropDivs(num1) === num2;
     },
     (num1, num2) => {
-        return getSumPropDiv(num2) === num1;
+        return getSumPropDivs(num2) === num1;
     },
 ];
 Object.freeze(conditionsFns);
@@ -82,7 +80,7 @@ function searchForAmicablePairs(upToExcl: number): void {
     }
 }
 
-function displInfoAmicablePair(searchUpToExcl: number): void {
+function displInfoAmicablePairs(searchUpToExcl: number): void {
     console.log("Looking for amicable pairs");
     console.log("testing numbers up to (excl):", searchUpToExcl);
     console.log("PLEASE BE PATIENT THIS MAY TAKE SOME TIME");
@@ -92,7 +90,7 @@ function displInfoAmicablePair(searchUpToExcl: number): void {
 function main(): void {
     console.log("");
     console.log("====");
-    displInfoAmicablePair(2000);
+    displInfoAmicablePairs(2000);
     console.log("====");
     console.log("That is all. Goodbye.");
 }

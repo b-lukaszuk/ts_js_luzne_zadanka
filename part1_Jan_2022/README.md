@@ -7,6 +7,7 @@
 3. [Task 2](#task-2)
 4. [Task 3](#task-3)
 5. [Task 4](#task-4)
+5. [Task 6](#task-6)
 
 ---
 
@@ -153,3 +154,16 @@ Calculate and show here the Amicable pairs below 20,000; (there are eight).
 Due to performance I limited my programs to look for amiable pairs below 2'000.
 
 Still, it takes around 40 sec. to find them (TS/JS), interestingly similar program in Python needs ~180 sec (the same device, similar code).
+
+# Task 5
+
+[Go to: Table of contents](#table-of-contents)
+
+Write [Anagrams](https://rosettacode.org/wiki/Anagrams)
+
+## Description
+
+When two or more words are composed of the same characters, but in a different order, they are called [anagrams](https://en.wikipedia.org/wiki/Anagram).
+
+Using the word list at http://wiki.puzzlers.org/pub/wordlists/unixdict.txt,
+find the sets of words that share the same characters that contain the most words in them.

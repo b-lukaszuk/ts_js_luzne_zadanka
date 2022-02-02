@@ -1,3 +1,4 @@
+import * as fs from "fs";
 const fileName: string = "./unixdict.txt"
 
 function toLowerAndSort(word: string): string {

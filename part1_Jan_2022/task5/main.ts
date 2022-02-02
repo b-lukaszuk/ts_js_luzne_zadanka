@@ -25,3 +25,17 @@ function remAnagramsOfWord(word: string, dict: string[]): string[] {
         return !isAnagram(word, item);
     });
 }
+
+function getMostAnagrams(dict: string[]): string[] {
+    let oldAnagrams: string[] = [];
+    let dictCopy: string[] = [...dict];
+    let newAnagrams: string[] = [];
+    do {
+        newAnagrams = getAnagramsOfWord(dictCopy[0], dictCopy);
+        dictCopy = remAnagramsOfWord(dictCopy[0], dictCopy);
+        if (newAnagrams.length > oldAnagrams.length) {
+            oldAnagrams = newAnagrams;
+        }
+    } while (dictCopy.length !== 0);
+    return oldAnagrams;
+}

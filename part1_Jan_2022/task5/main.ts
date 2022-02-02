@@ -15,16 +15,18 @@ function isAnagram(word1: string, word2: string): boolean {
     return w1processed.localeCompare(w2processed) === 0;
 }
 
-function getAnagramsOfWord(word: string, dict: string[]): string[] {
-    return dict.filter((item) => {
-        return isAnagram(word, item);
-    });
-}
-
-function remAnagramsOfWord(word: string, dict: string[]): string[] {
-    return dict.filter((item) => {
-        return !isAnagram(word, item);
-    });
+// returns list of anagrams and newDict
+function getAnagramsOfWord(word: string, dict: string[]): string[][] {
+    let anagrams: string[] = [];
+    let newDict: string[] = [];
+    for (let i = 0; i < dict.length; i++) {
+        if (isAnagram(word, dict[i])) {
+            anagrams.push(dict[i]);
+        } else {
+            newDict.push(dict[i]);
+        }
+    }
+    return [anagrams, newDict];
 }
 
 function getMostAnagrams(dict: string[]): string[] {
@@ -32,8 +34,7 @@ function getMostAnagrams(dict: string[]): string[] {
     let dictCopy: string[] = [...dict];
     let newAnagrams: string[] = [];
     do {
-        newAnagrams = getAnagramsOfWord(dictCopy[0], dictCopy);
-        dictCopy = remAnagramsOfWord(dictCopy[0], dictCopy);
+        [newAnagrams, dictCopy] = getAnagramsOfWord(dictCopy[0], dictCopy);
         if (newAnagrams.length > oldAnagrams.length) {
             oldAnagrams = newAnagrams;
         }
@@ -64,4 +65,5 @@ function main(): void {
     console.log("That's all. Goodbye.");
 }
 
+// wykonanie ~ 61 sec
 main();

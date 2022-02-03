@@ -1,45 +1,35 @@
 import * as fs from "fs";
 const fileName: string = "./unixdict.txt"
 
-function toLowerAndSort(word: string): string {
-    let lowerCaseLetters: string[] = word.toLocaleLowerCase().split('');
-    let sorted: string[] = lowerCaseLetters.sort((a, b) => {
-        return a.localeCompare(b);
-    })
-    return sorted.join('');
-}
+interface Dictionary<T> {
+    [Key: string]: T;
+};
 
-function isAnagram(word1: string, word2: string): boolean {
-    let w1processed: string = toLowerAndSort(word1);
-    let w2processed: string = toLowerAndSort(word2);
-    return w1processed.localeCompare(w2processed) === 0;
-}
+interface Result {
+    "anagrams": Dictionary<string[]>,
+    "max": number
+};
 
-// returns list of anagrams and newDict
-function getAnagramsOfWord(word: string, dict: string[]): string[][] {
-    let anagrams: string[] = [];
-    let newDict: string[] = [];
+function getMostAnagrams(dict: string[]): Result {
+    let res: Result = { "anagrams": {}, "max": 0 };
+    let key: string = "";
     for (let i = 0; i < dict.length; i++) {
-        if (isAnagram(word, dict[i])) {
-            anagrams.push(dict[i]);
+        key = dict[i].split("").sort().join("");
+        if (!res.anagrams.hasOwnProperty(key)) {
+            res.anagrams[key] = [dict[i]];
         } else {
-            newDict.push(dict[i]);
+            res.max = Math.max(res.max, res.anagrams[key].push(dict[i]));
         }
     }
-    return [anagrams, newDict];
+    return res;
 }
 
-function getMostAnagrams(dict: string[]): string[] {
-    let oldAnagrams: string[] = [];
-    let dictCopy: string[] = [...dict];
-    let newAnagrams: string[] = [];
-    do {
-        [newAnagrams, dictCopy] = getAnagramsOfWord(dictCopy[0], dictCopy);
-        if (newAnagrams.length > oldAnagrams.length) {
-            oldAnagrams = newAnagrams;
+function printMostAnagrams(result: Result): void {
+    for (let key in result.anagrams) {
+        if (result.anagrams[key].length === result.max) {
+            console.log(result.anagrams[key]);
         }
-    } while (dictCopy.length !== 0);
-    return oldAnagrams;
+    }
 }
 
 function getWords(fileName: string): string[] {
@@ -61,9 +51,9 @@ function main(): void {
     console.log("looking for the greatest number of anagrams in the list");
     console.log("PLEASE BE PATIENT THIS MAY TAKE SOME TIME");
     console.log("Result:")
-    console.log(getMostAnagrams(dict));
+    printMostAnagrams(getMostAnagrams(dict));
     console.log("That's all. Goodbye.");
 }
 
-// wykonanie ~ 61 sec
+// wykonanie ~ 0.06 sec
 main();

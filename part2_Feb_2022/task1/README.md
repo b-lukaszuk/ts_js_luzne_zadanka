@@ -11,4 +11,4 @@ find the sets of words that share the same characters that contain the most word
 
 ## Additional info
 
-It takes around 61 sec to execute (on my laptop), similar program in Haskell runs ~ 60 sec (virtually the same amount of time)
+It takes around 0.06 sec to execute (on my laptop).

@@ -1,14 +1,11 @@
-import range from './range';
-
-function isNoReminder(dividend: number, divisor: number): boolean {
-    return dividend % divisor === 0;
-}
-
 function getProperDivisors(testedNum: number): number[] {
-    let candidates: number[] = range(1, testedNum);
-    return candidates.filter((cand) => {
-        return isNoReminder(testedNum, cand);
-    })
+    let result: number[] = [];
+    for (let i = 0; i < testedNum; i++) {
+        if (testedNum % i === 0) {
+            result.push(i);
+        }
+    }
+    return result;
 }
 
 export default getProperDivisors;

@@ -14,9 +14,9 @@ function areAmicablePair(num1: number, num2: number): boolean {
     );
 }
 
-function searchForAmicablePairs(upToExcl: number): void {
-    for (let i = 1; i < upToExcl; i++) {
-        for (let j = i; j < upToExcl; j++) {
+function searchForAmicablePairs(upToIncl: number): void {
+    for (let i = 1; i < upToIncl; i++) {
+        for (let j = i; j <= upToIncl; j++) {
             if (areAmicablePair(i, j)) {
                 console.log("Pair found:", [i, j]);
             }
@@ -39,5 +39,5 @@ function main(): void {
     console.log("That is all. Goodbye.");
 }
 
-// for nums up to 2000 it takes around 11 sec
+// for nums up to 2000 it takes around 9.8 sec
 main();

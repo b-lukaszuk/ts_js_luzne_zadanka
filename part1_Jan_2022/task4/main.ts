@@ -39,5 +39,5 @@ function main(): void {
     console.log("That is all. Goodbye.");
 }
 
-// for nums up to 2000 it takes around 40 sec
+// for nums up to 2000 it takes around 11 sec
 main();

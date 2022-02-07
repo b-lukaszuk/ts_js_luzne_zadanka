@@ -152,4 +152,4 @@ Calculate and show here the Amicable pairs below 20,000; (there are eight).
 
 Due to performance I limited my programs to look for amiable pairs below 2'000.
 
-Still, it takes around 40 sec. to find them (TS/JS), interestingly similar program in Python needs ~180 sec (the same device, similar code).
+Still, it takes around 11 sec. to find them (TS/JS), interestingly similar program in Python needs ~65 sec (the same device, similar code).

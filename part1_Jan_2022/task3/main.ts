@@ -1,20 +1,19 @@
-import range from './range';
-
-function isNoReminder(dividend: number, divisor: number): boolean {
-    return dividend % divisor === 0;
-}
-
 function getProperDivisors(testedNum: number): number[] {
-    let candidates: number[] = range(1, testedNum);
-    return candidates.filter((cand) => {
-        return isNoReminder(testedNum, cand);
-    })
+    let result: number[] = [];
+    for (let i = 0; i < testedNum; i++) {
+        if (testedNum % i === 0) {
+            result.push(i);
+        }
+    }
+    return result;
 }
 
 function numOfPropDivsForNumsUpTo(upToIncl: number): number[] {
-    return range(1, upToIncl + 1).map((n) => {
-        return getProperDivisors(n).length;
-    })
+    let result: number[] = [];
+    for (let i = 0; i <= upToIncl; i++) {
+        result.push(getProperDivisors(i).length);
+    }
+    return result;
 }
 
 function displInfoNumOfPropDivsUpTo(upToIncl: number): void {
@@ -38,5 +37,5 @@ function main(): void {
     console.log("That is all. Goodbye");
 }
 
-// execution time 2.35 sec
+// execution time 1.6 sec
 main();

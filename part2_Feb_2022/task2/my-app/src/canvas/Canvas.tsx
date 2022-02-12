@@ -1,10 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import './Canvas.css';
 
-const Canvas: React.FC = () => {
+interface Props {
+    isColBlue: boolean,
+}
+
+const Canvas: React.FC<Props> = (props) => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-    let colBlue: boolean = true;
+    let isColBlue: boolean = props.isColBlue;
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -12,9 +16,9 @@ const Canvas: React.FC = () => {
         const context = canvas.getContext("2d");
         if (context === null) { return undefined; }
         context.rect(0, 0, 100, 100);
-        context.fillStyle = colBlue ? "blue" : "red";
+        context.fillStyle = isColBlue ? "blue" : "red";
         context.fill();
-    }, [])
+    }, [isColBlue])
 
     return (
         <div>

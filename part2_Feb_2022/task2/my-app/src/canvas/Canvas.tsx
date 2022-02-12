@@ -11,13 +11,13 @@ const Canvas: React.FC<Props> = (props) => {
     let isColBlue: boolean = props.isColBlue;
 
     useEffect(() => {
-        const canvas = canvasRef.current;
+        const canvas: HTMLCanvasElement | null = canvasRef.current;
         if (canvas === null) { return undefined; }
-        const context = canvas.getContext("2d");
-        if (context === null) { return undefined; }
-        context.rect(0, 0, 100, 100);
-        context.fillStyle = isColBlue ? "blue" : "red";
-        context.fill();
+        const ctx: CanvasRenderingContext2D | null = canvas.getContext("2d");
+        if (ctx === null) { return undefined; }
+        ctx.rect(0, 0, 100, 100);
+        ctx.fillStyle = isColBlue ? "blue" : "red";
+        ctx.fill();
     }, [isColBlue])
 
     return (

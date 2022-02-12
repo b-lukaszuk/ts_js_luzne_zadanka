@@ -6,13 +6,13 @@ import setCanvasDefaults from './draw/setCanvasDefaults';
 import drawPendulum from './draw/drawPendulum';
 
 interface Props {
-    angle: number,
+    curHour: number,
 }
 
 const Canvas: React.FC<Props> = (props) => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-    let angle: number = props.angle;
+    let curHour: number = props.curHour;
 
     useEffect(() => {
         const canvas: HTMLCanvasElement | null = canvasRef.current;
@@ -22,8 +22,8 @@ const Canvas: React.FC<Props> = (props) => {
         if (ctx === null) { return undefined; }
         drawCanvBck(canvas, ctx, "lightgray");
         drawBase(canvas, ctx, canvas.height / 4);
-        drawPendulum(canvas, ctx, canvas.height / 4, 200, 6);
-    }, [angle])
+        drawPendulum(canvas, ctx, canvas.height / 4, 200, curHour);
+    }, [curHour])
 
     return (
         <div>

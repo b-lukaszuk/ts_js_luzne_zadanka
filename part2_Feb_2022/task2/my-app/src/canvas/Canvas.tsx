@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './Canvas.css';
 
 const Canvas: React.FC = () => {
+    const canvasRef = useRef<HTMLCanvasElement | null>(null);
     return (
         <div>
-            <canvas className="canvas" />
+            <canvas ref={canvasRef} className="canvas" />
         </div>
     )
 }

@@ -1,24 +1,29 @@
 import React, { useEffect, useRef } from 'react';
+import drawBase from './draw/drawBase';
+import drawCanvBck from './draw/drawCanvBcg';
 import './Canvas.css';
+import setCanvasDefaults from './draw/setCanvasDefaults';
+import drawPendulum from './draw/drawPendulum';
 
 interface Props {
-    isColBlue: boolean,
+    angle: number,
 }
 
 const Canvas: React.FC<Props> = (props) => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-    let isColBlue: boolean = props.isColBlue;
+    let angle: number = props.angle;
 
     useEffect(() => {
         const canvas: HTMLCanvasElement | null = canvasRef.current;
         if (canvas === null) { return undefined; }
+        setCanvasDefaults(canvas);
         const ctx: CanvasRenderingContext2D | null = canvas.getContext("2d");
         if (ctx === null) { return undefined; }
-        ctx.rect(0, 0, 100, 100);
-        ctx.fillStyle = isColBlue ? "blue" : "red";
-        ctx.fill();
-    }, [isColBlue])
+        drawCanvBck(canvas, ctx, "lightgray");
+        drawBase(canvas, ctx, canvas.height / 4);
+        drawPendulum(canvas, ctx, canvas.height / 4, 200, 6);
+    }, [angle])
 
     return (
         <div>

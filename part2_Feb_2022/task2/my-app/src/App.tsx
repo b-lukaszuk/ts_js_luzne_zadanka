@@ -15,7 +15,7 @@ const App: React.FC = () => {
     // get next hour of analogue clock pointed by the pendulum
     const getNextHour = (curHour: number): number => {
         // interesting, rendering is kind of delayed by one frame
-        // i.e. when App.tsx hour = 8, then Canvas.tsx hour = 9
+        // i.e. App.tsx hour = 8 & Canvas.tsx hour = App.tsx hour + increment
         // not sure why
         if (curHour >= 8.75) { setMoveCW(false) }
         if (curHour <= 3.25) { setMoveCW(true) }

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
+
 import Canvas from './canvas/Canvas';
+
+import './App.css';
 
 const App: React.FC = () => {
     const [curHour, setCurHour]: [number, Function] = useState(3);

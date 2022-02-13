@@ -16,7 +16,7 @@ function drawPendulum(canv: HTMLCanvasElement,
         lenght, canv.width / 2, startHeight);
     ctx.lineTo(xEnd, yEnd);
     ctx.stroke();
-    drawCircle(canv, ctx, xEnd, yEnd, 15, "yellow");
+    drawCircle(ctx, xEnd, yEnd, 15, "yellow");
 }
 
 export default drawPendulum;

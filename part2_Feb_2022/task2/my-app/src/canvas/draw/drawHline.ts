@@ -1,5 +1,6 @@
 function drawHline(canv: HTMLCanvasElement, ctx: CanvasRenderingContext2D,
     height: number, col: string): void {
+
     ctx.beginPath();
     ctx.strokeStyle = col;
     ctx.lineWidth = 1;

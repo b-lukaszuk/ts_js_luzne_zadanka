@@ -1,8 +1,7 @@
 import degToRad from './degToRad';
 
-function drawCircle(canv: HTMLCanvasElement,
-    ctx: CanvasRenderingContext2D,
-    xMid: number, yMid: number, radius: number, col: string) {
+function drawCircle(ctx: CanvasRenderingContext2D,
+    xMid: number, yMid: number, radius: number, col: string): void {
 
     ctx.strokeStyle = "black";
     ctx.lineWidth = 1;

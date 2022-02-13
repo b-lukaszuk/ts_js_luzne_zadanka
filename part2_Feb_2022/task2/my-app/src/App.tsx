@@ -7,21 +7,23 @@ const App: React.FC = () => {
     const [moveCW, setMoveCW]: [boolean, Function] = useState(true);
 
     const addOrSubtr = (num: number, shouldAdd: boolean): number => {
-        return shouldAdd ? num + 1 : num - 1;
+        return shouldAdd ? num + 0.25 : num - 0.25;
     }
 
     // get next hour of analogue clock pointed by the pendulum
     const getNextHour = (curHour: number): number => {
-        if (curHour === 9) { setMoveCW(false) }
-        if (curHour === 3) { setMoveCW(true) }
+        // interesting, rendering is kind of delayed by one frame
+        // i.e. when App.tsx hour = 8, then Canvas.tsx hour = 9
+        // not sure why
+        if (curHour >= 8.75) { setMoveCW(false) }
+        if (curHour <= 3.25) { setMoveCW(true) }
         return addOrSubtr(curHour, moveCW);
     }
 
     useEffect(() => {
         let timerId = setInterval(() => {
             setCurHour(getNextHour(curHour));
-            console.log("hour:", curHour);
-        }, 5000);
+        }, 100);
         return () => { clearInterval(timerId) };
     })
 

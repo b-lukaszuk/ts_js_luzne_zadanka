@@ -1,8 +1,14 @@
 // the desciption on how to compare numbers was a bit imprecise to me
-function areAproxEql(num1: number, num2: number): boolean {
+/**
+ * @param {Number} num1 - number to compare
+ * @param {Number} num2 - number to compare
+ * @param {Number} threshold - max(abs(num1), max(abs(num2)) * threshold)
+ * @return {Boolean} - the result of comparison
+ */
+function areAproxEql(num1: number, num2: number,
+    threshold: number = 1e-9): boolean {
     let theMax: number = Math.max(Math.abs(num1), Math.abs(num2));
-    let relativeDiff: number = 1e-9;
-    return Math.abs(num1 - num2) <= (theMax * relativeDiff);
+    return Math.abs(num1 - num2) <= (theMax * threshold);
 }
 
 let numsToTest: number[] = [
@@ -14,6 +20,7 @@ let numsToTest: number[] = [
     Math.sqrt(2) * Math.sqrt(2), 2.0,
     -Math.sqrt(2) * Math.sqrt(2), -2.0,
     3.14159265358979323846, 3.14159265358979324,
+    (3 * 0.1), 0.3
 ];
 
 function declareResultOfComparison(num1: number, num2: number): void {

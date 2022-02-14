@@ -26,3 +26,10 @@ Show the function results with comparisons on the following pairs of values:
 </pre>
 
 Answers should be true for the first example and false in the second, so that just rounding the numbers to a fixed number of decimals should not be enough. Otherwise answers may vary and still be correct. See the Python code for one type of solution.
+
+## Additional info
+
+Terminal should be able to display unicode characters i.e.
+<pre>
+&#x2248;
+</pre>

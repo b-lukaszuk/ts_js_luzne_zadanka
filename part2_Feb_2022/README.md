@@ -6,6 +6,8 @@
 2. [Task 1](#task-1)
 3. [Task 2](#task-2)
 4. [Task 3](#task-3)
+5. [Task 4](#task-4)
+6. [Task 5](#task-5)
 
 ---
 
@@ -81,3 +83,37 @@ Terminal should be able to display unicode characters i.e.
 <pre>
 &#x2248;
 </pre>
+
+# Task 4
+
+[Go to: Table of contents](#table-of-contents)
+
+Write [Animation](https://rosettacode.org/wiki/Animation)
+
+## Description
+
+Create a window containing the string "Hello World! " (the trailing space is significant).
+
+Make the text appear to be rotating right by periodically removing one letter from the end of the string and attaching it to the front.
+
+When the user clicks on the (windowed) text, it should reverse its direction.
+
+# Task 5
+
+[Go to: Table of contents](#table-of-contents)
+
+Write [Archimedean spiral](https://rosettacode.org/wiki/Archimedean_spiral)
+
+## Description
+
+The [Archimedean spiral](https://en.wikipedia.org/wiki/Archimedean_spiral) is a spiral named after the Greek mathematician Archimedes.
+
+An Archimedean spiral can be described by the equation:
+
+<pre>
+r = a + b&#x3B8;
+</pre>
+
+with real numbers a and b.
+
+Draw an Archimedean spiral.

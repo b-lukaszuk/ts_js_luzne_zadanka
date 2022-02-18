@@ -1,0 +1,13 @@
+body {
+    text-align: center;
+}
+
+#animation {
+    background-color: blue;
+    color: white;
+    display: inline-block;
+}
+
+#animation:hover {
+    cursor: pointer;
+}

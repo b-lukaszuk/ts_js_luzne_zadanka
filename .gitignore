@@ -1,2 +1,4 @@
 *.js
 *node_modules
+
+!part2_Feb_2022/task4/*.js

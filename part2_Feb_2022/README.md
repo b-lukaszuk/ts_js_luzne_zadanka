@@ -8,6 +8,7 @@
 4. [Task 3](#task-3)
 5. [Task 4](#task-4)
 6. [Task 5](#task-5)
+7. [Task 6](#task-6)
 
 ---
 
@@ -117,3 +118,14 @@ r = a + b&#x3B8;
 with real numbers a and b.
 
 Draw an Archimedean spiral.
+
+# Task 6
+
+[Go to: Table of contents](#table-of-contents)
+
+Write simple Student's t-test calculator.
+
+Helpful sources:
+- [wikipedia](https://en.wikipedia.org/wiki/Student%27s_t-test)
+- [Rseek](https://rseek.org/)
+- [Practical Statistics for Medical Research](https://books.google.pl/books?id=Y5ebDwAAQBAJ&hl=pl&source=gbs_book_other_versions)

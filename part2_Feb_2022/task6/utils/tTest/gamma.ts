@@ -1,24 +1,5 @@
-function isInt(n: number): boolean {
-    if (isNaN(n)) {
-        return false;
-    } else {
-        return (n | 0) === n;
-    }
-}
-
-function factorial(n: number): number {
-    if (n < 0 || !isInt(n)) {
-        throw Error("factorial can be computed only for integers >= 0");
-    } else if (n < 2) {
-        return 1;
-    } else {
-        let result: number = 1;
-        for (let i = 2; i <= n; i++) {
-            result *= i;
-        }
-        return result;
-    }
-}
+import isInt from "./isInt";
+import factorial from "./factorial";
 
 // https://rosettacode.org/wiki/Gamma_function#JavaScript
 // https://en.wikipedia.org/wiki/Lanczos_approximation

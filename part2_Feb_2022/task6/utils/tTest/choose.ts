@@ -1,4 +1,4 @@
-import factorial from "./factorial";
+import factorial from "../basic/factorial";
 
 function choose(n: number, k: number): number {
     if (k > n) {

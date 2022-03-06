@@ -4,6 +4,7 @@ import factorial from "../basic/factorial";
 // https://rosettacode.org/wiki/Gamma_function#JavaScript
 // https://en.wikipedia.org/wiki/Lanczos_approximation
 // https://en.wikipedia.org/wiki/Gamma_function
+// modified by me
 function gamma(x: number): number {
     if (isInt(x)) {
         return factorial(x - 1);

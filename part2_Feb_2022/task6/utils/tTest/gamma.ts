@@ -5,8 +5,11 @@ import factorial from "../basic/factorial";
 // https://en.wikipedia.org/wiki/Lanczos_approximation
 // https://en.wikipedia.org/wiki/Gamma_function
 // modified by me
+// tested (with a few random numbers) for fidelity with R's gamma function
 function gamma(x: number): number {
-    if (isInt(x)) {
+    if (x <= 0) {
+        return NaN;
+    } else if (isInt(x)) {
         return factorial(x - 1);
     } else {
         let p: number[] = [0.99999999999980993, 676.5203681218851,

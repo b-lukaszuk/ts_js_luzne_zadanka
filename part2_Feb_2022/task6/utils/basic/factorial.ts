@@ -1,16 +1,16 @@
 import isInt from "./isInt";
+import factorialInt from "./factorialInt";
+import gamma from "./gamma";
 
+// tested (with a few random numbers) for fidelity with R's factorial function
+// accurate (agrees with R's output) up to 11 decimal digits
 function factorial(n: number): number {
-    if (n < 0 || !isInt(n)) {
-        throw Error("factorial can be computed only for integers >= 0");
-    } else if (n < 2) {
-        return 1;
+    if (n < 0) {
+        return NaN;
+    } else if (isInt(n)) {
+        return factorialInt(n);
     } else {
-        let result: number = 1;
-        for (let i = 2; i <= n; i++) {
-            result *= i;
-        }
-        return result;
+        return gamma(n + 1);
     }
 }
 

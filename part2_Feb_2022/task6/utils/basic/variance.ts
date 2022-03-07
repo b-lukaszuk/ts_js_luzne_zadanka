@@ -1,5 +1,5 @@
-import getSum from "./sum";
 import getAvg from "./average";
+import getSum from "./sum";
 
 // length - 1, because we are calculating sample variance
 function getVariance(nums: number[]): number {

@@ -1,5 +1,5 @@
-import isInt from "../basic/isInt";
 import factorialInt from "../basic/factorialInt";
+import isInt from "../basic/isInt";
 
 // https://rosettacode.org/wiki/Gamma_function#JavaScript
 // https://en.wikipedia.org/wiki/Lanczos_approximation

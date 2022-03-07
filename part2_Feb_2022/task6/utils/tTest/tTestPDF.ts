@@ -1,4 +1,4 @@
-import gamma from "./gamma";
+import gamma from "../basic/gamma";
 
 // https://en.wikipedia.org/wiki/Student%27s_t-distribution#Probability_density_function
 // tested (with a few random numbers) for fidelity with R's dt function

@@ -1,5 +1,7 @@
 import choose from "./choose";
 
+// tested (with a few random numbers) for fidelity with R's factorial function
+// seems to be working just fine
 function binomialPMF(noOfSuccesses: number, noOfTrials: number,
     probOfSuccess: number): number {
     if (noOfSuccesses < 0 || noOfTrials < 0

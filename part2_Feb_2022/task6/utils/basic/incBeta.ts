@@ -5,7 +5,7 @@ import gamma from "./gamma";
 // translated to ts by me
 
 function lGamma(x: number): number {
-    return Math.log(gamma(x));
+    return Math.log(Math.abs(gamma(x)));
 }
 
 const TINY: number = 1e-30;

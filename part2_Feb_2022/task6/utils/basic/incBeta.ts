@@ -72,4 +72,8 @@ function incBeta(a: number, b: number, x: number): number {
     return NaN; // Needed more loops, did not converge
 }
 
-export default incBeta;
+function regularizedBeta(a: number, b: number, x: number) {
+    return incBeta(a, b, x) / beta(a, b);
+}
+
+export default regularizedBeta;

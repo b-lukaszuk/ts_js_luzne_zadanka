@@ -4,6 +4,12 @@ import gamma from "./gamma";
 // https://github.com/codeplea/incbeta/blob/master/incbeta.c
 // translated to ts by me
 
+function beta(x: number, y: number): number {
+    let numerator: number = gamma(x) * gamma(y);
+    let denominator: number = gamma(x + y);
+    return numerator / denominator;
+}
+
 function lGamma(x: number): number {
     return Math.log(Math.abs(gamma(x)));
 }

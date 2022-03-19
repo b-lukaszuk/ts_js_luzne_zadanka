@@ -1,23 +1,23 @@
-function d2t(degree: number): number {
-    let turn: number = degree / 360;
-    return turn;
+function d2t(degrees: number): number {
+    let turns: number = degrees / 360;
+    return turns;
 }
 
-function d2g(degree: number): number {
-    let turn: number = d2t(degree);
-    let gradian: number = turn * 400;
+function d2g(degrees: number): number {
+    let turns: number = d2t(degrees);
+    let gradian: number = turns * 400;
     return gradian;
 }
 
-function d2m(degree: number): number {
-    let turn: number = d2t(degree);
-    let mil: number = turn * 6400;
+function d2m(degrees: number): number {
+    let turns: number = d2t(degrees);
+    let mil: number = turns * 6400;
     return mil;
 }
 
-function d2r(degree: number): number {
-    let turn: number = d2t(degree);
-    let radian: number = turn * 2 * Math.PI;
+function d2r(degrees: number): number {
+    let turns: number = d2t(degrees);
+    let radian: number = turns * 2 * Math.PI;
     return radian;
 }
 

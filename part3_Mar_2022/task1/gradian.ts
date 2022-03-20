@@ -21,4 +21,4 @@ function g2r(gradians: number): number {
     return radians;
 }
 
-export { g2d, g2m, g2r };
+export { g2t, g2d, g2m, g2r };

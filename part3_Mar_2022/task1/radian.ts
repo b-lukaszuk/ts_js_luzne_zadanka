@@ -21,4 +21,4 @@ function r2m(radians: number): number {
     return mils;
 }
 
-export { r2d, r2g, r2m };
+export { r2t, r2d, r2g, r2m };

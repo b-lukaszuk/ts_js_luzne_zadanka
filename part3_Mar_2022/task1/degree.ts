@@ -21,4 +21,4 @@ function d2r(degrees: number): number {
     return radians;
 }
 
-export { d2g, d2m, d2r };
+export { d2t, d2g, d2m, d2r };

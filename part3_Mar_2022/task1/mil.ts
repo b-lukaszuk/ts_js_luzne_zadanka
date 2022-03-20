@@ -21,4 +21,4 @@ function m2r(mils: number): number {
     return radians;
 }
 
-export { m2d, m2g, m2r };
+export { m2t, m2d, m2g, m2r };

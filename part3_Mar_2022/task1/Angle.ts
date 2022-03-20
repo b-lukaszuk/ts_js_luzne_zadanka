@@ -10,7 +10,7 @@ class Angle {
     }
 
     private _setInternals(turns: number = 0): void {
-        turns = Math.abs(turns) > 1 ? turns % 1 : turns;
+        turns = (Math.abs(turns) > 1) ? (turns % 1) : turns;
         if (turns < 0) {
             this._turns = 1 - turns;
             this._negative = true;

@@ -1,6 +1,7 @@
 import { d2t } from "./degree";
 import { g2t } from "./gradian";
-import { t2d, t2g } from "./turns";
+import { m2t } from "./mil";
+import { t2d, t2g, t2m } from "./turns";
 
 class Angle {
     private _turns: number = 0;
@@ -39,6 +40,14 @@ class Angle {
 
     public get gradians(): number {
         return t2g(this._getTurns());
+    }
+
+    public set mils(mils: number) {
+        this._setInternals(m2t(mils));
+    }
+
+    public get mils(): number {
+        return t2m(this._getTurns());
     }
 }
 

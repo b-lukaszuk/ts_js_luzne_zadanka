@@ -1,55 +1,28 @@
-import choose from "./choose";
+import isInt from "./isInt";
 
-// TODO: check it with R's hypergeom functions
-// (either: dhyper, phyper, qhyper; probably: dhyper)
-// https://www.youtube.com/watch?v=uzN7U88KSx8
-// tested with the numbers given in the video, seems to be working correctly
+// https://www.cplusplus.com/forum/general/255896/
+function hypergeom(a: number, b: number, c: number, x: number): number {
+    if (Math.abs(x) < 1 || c === 0 || (isInt(c) && c > 0)) {
 
-function hypergeom(
-    numOfSuccInNumOfTrials: number,
-    totalNoOfEltsInPopulation: number,
-    numOfSuccInPopulation: number,
-    numOfTrialsOrSampleSize: number
-): number {
-    let numOfFailuresInPopulation: number =
-        totalNoOfEltsInPopulation - numOfSuccInPopulation;
-    let numOfFailuresInNumOfTrials: number =
-        numOfTrialsOrSampleSize - numOfSuccInNumOfTrials;
-    let numerator1: number = choose(
-        numOfSuccInPopulation,
-        numOfSuccInNumOfTrials
-    );
-    let numerator2: number = choose(
-        numOfFailuresInPopulation,
-        numOfFailuresInNumOfTrials
-    );
-    let denominator: number = choose(
-        totalNoOfEltsInPopulation,
-        numOfTrialsOrSampleSize
-    );
-    // console.log(
-    //     "numerator 1 =",
-    //     numOfSuccInPopulation,
-    //     numOfSuccInNumOfTrials
-    // );
-    // console.log(
-    //     "numerator 2 =",
-    //     numOfFailuresInPopulation,
-    //     numOfFailuresInNumOfTrials
-    // );
-    // console.log(
-    //     "denominator =",
-    //     totalNoOfEltsInPopulation,
-    //     numOfTrialsOrSampleSize
-    // );
-    return (numerator1 * numerator2) / denominator;
+        const TOLERANCE: number = 1e-10;
+        let term: number = a * b * x / c;
+        let value: number = 1 + term;
+        let n: number = 1;
+
+        while (Math.abs(term) > TOLERANCE) {
+            a += 1;
+            b += 1;
+            c += 1;
+            n += 1;
+            term *= a * b * x / c / n;
+            value += term;
+        }
+
+        return value;
+
+    } else {
+        return NaN;
+    }
 }
-
-// [0, 1, 2, 3].forEach((n) => console.log(hypergeom(n, 9, 3, 5)));
-// console.log(
-//     [0, 1, 2, 3]
-//         .map((n) => hypergeom(n, 9, 3, 5))
-//         .reduce((prev, cur) => prev + cur, 0)
-// );
 
 export default hypergeom;

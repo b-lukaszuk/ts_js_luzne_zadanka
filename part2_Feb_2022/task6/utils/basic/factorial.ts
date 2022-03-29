@@ -10,6 +10,7 @@ function factorial(n: number): number {
     } else if (isInt(n)) {
         return factorialInt(n);
     } else {
+        // https://en.wikipedia.org/wiki/Gamma_function
         return gamma(n + 1);
     }
 }

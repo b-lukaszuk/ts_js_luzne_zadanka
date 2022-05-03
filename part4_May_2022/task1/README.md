@@ -6,17 +6,29 @@ My try on snake game with vanilla TS/JS.
 
 Explanation how to run TS modules to JS found [here](https://www.youtube.com/watch?v=EpOPR03z4Vw)
 
-Run *.html file with VSCode LiverServer ('Go live')
-
-or run
+Basically go to `task1/` open terminal and run:
 
 ```bash
-npx http-server --cors
+tsc --watch
 ```
 
-and then open localhost, e.g.
+Run *.html file with VSCode LiverServer ('Go Live')
 
-http://127.0.0.1:8080 in your browser
+or http-server [http-server](https://www.npmjs.com/package/http-server) by typing into terminal
+
+```bash
+npx http-server --cors # no installation
+```
+
+or
+
+```bash
+npm install --global http-server # install globally
+# and
+http-server [path] [options]
+# e.g.
+http-server -o ./public/index.html --cors # opens web browser with localhost 8080
+```
 
 ## Additional info
 

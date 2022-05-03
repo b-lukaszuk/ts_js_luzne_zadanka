@@ -23,7 +23,7 @@ tsc --watch
 
 Run *.html file with VSCode LiverServer ('Go Live')
 
-or http-server [http-server](https://www.npmjs.com/package/http-server) by typing into terminal
+or http-server [http-server](https://www.npmjs.com/package/http-server) by typing into another terminal window
 
 ```bash
 npx http-server --cors # no installation

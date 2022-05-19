@@ -5,6 +5,7 @@
 1. [Info](#info)
 2. [Task 1](#task-1)
 3. [Task 2](#task-2)
+4. [Task 3](#task-3)
 
 ---
 
@@ -72,6 +73,8 @@ Try to expand it to compute something a bit more difficult, like:
   - OUT: 502.31 or 1004.62
 
 # Task 3
+
+[Go to: Table of contents](#table-of-contents)
 
 Similar to Task2. Try something alike for [amino acids](https://en.wikipedia.org/wiki/Amino_acid), e.g read sequence of aminoacids from something like [FASTA format](https://en.wikipedia.org/wiki/FASTA_format), e.g.
 

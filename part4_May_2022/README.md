@@ -66,5 +66,5 @@ Examples:
 
 Try to expand it to compute something a bit more difficult, like:
 + hydroxyapatite
-- IN: "Ca5(PO4)3OH"
-- OUT: 502.31
+- IN: "Ca5(PO4)3OH" or "Ca10(PO4)6(OH)2"
+- OUT: 502.31 or 1004.62

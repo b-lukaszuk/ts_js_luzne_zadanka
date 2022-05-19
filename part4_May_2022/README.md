@@ -52,6 +52,7 @@ http-server -o ./public/index.html --cors # opens web browser with localhost 808
 Write a program (function) that will take a molecular formula and compute the molecular mass [g/mol] of a substance.
 
 Examples:
+
 + glucose
   - IN: "C6H12O6"
   - OUT: 180.156
@@ -65,6 +66,7 @@ Examples:
 ## Task 2.1
 
 Try to expand it to compute something a bit more difficult, like:
+
 + hydroxyapatite
-- IN: "Ca5(PO4)3OH" or "Ca10(PO4)6(OH)2"
-- OUT: 502.31 or 1004.62
+  - IN: "Ca5(PO4)3OH" or "Ca10(PO4)6(OH)2"
+  - OUT: 502.31 or 1004.62

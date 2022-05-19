@@ -70,3 +70,15 @@ Try to expand it to compute something a bit more difficult, like:
 + hydroxyapatite
   - IN: "Ca5(PO4)3OH" or "Ca10(PO4)6(OH)2"
   - OUT: 502.31 or 1004.62
+
+# Task 3
+
+Similar to Task2. Try something alike for [amino acids](https://en.wikipedia.org/wiki/Amino_acid), e.g read sequence of aminoacids from something like [FASTA format](https://en.wikipedia.org/wiki/FASTA_format), e.g.
+
+<pre>
+MDSKGSSQKGSRLLLLLVVSNLLLCQGVVSTPVCPNGPGNCQVSLRDLFDRAVMVSHYIHDLSS
+EMFNEFDKRYAQGKGFITMALNSCHTSSLPTPEDKEQAQQTHHEVLMSLILGLLRSWNDPLYHL
+VTEVRGMKGAPDAILSRAIEIEEENKRLLEGMEMIFGQVIPGAKETEPYPVWSGLPSLQTKDED
+</pre>
+
+should return proper molecular mass in [g/mol] or kDa

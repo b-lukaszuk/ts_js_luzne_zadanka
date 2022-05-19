@@ -4,6 +4,7 @@
 
 1. [Info](#info)
 2. [Task 1](#task-1)
+3. [Task 2](#task-2)
 
 ---
 
@@ -43,3 +44,27 @@ http-server -o ./public/index.html --cors # opens web browser with localhost 808
 
 **Do użytku własnego, nie powinno być używane przez nikogo innego.**
 **For personal use only, should not be used by anyone else.**
+
+# Task 2
+
+[Go to: Table of contents](#table-of-contents)
+
+Write a program (function) that will take a molecular formula and compute the molecular mass [g/mol] of a substance.
+
+Examples:
++ glucose
+  - IN: "C6H12O6"
+  - OUT: 180.156
++ phosphoric acid
+  - IN: "H3PO4"
+  - OUT: 98.00
++ tyrosine
+  - IN: "C9H11NO3"
+  - OUT: 181.191
+
+## Task 2.1
+
+Try to expand it to compute something a bit more difficult, like:
++ hydroxyapatite
+- IN: "Ca5(PO4)3OH"
+- OUT: 502.31

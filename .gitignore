@@ -2,3 +2,4 @@
 *node_modules
 
 !part2_Feb_2022/task4/*.js
+!part4_May_2022/task2/build/*.js

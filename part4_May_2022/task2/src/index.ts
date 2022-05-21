@@ -8,7 +8,7 @@ for (let i = 0; i < elements.length; i++) {
     elementMass.set(elements[i], molecularMasses[i]);
 }
 
-function spliSimpleMoleculeToAtoms(molecule: string): RegExpMatchArray | null {
+function simpleSplitToAtomsNumbers(molecule: string): RegExpMatchArray | null {
     let pattern: RegExp = /([A-Z][a-z]*)([0-9]*)/g;
     let result: RegExpMatchArray | null = molecule.match(pattern)
     return result;
@@ -19,7 +19,7 @@ let molecule2: string = "H3PO4"
 let molecule3: string = "C9H11NO3"
 let molecule4: string = "CaCl2"
 
-console.log(spliSimpleMoleculeToAtoms(molecule1))
-console.log(spliSimpleMoleculeToAtoms(molecule2))
-console.log(spliSimpleMoleculeToAtoms(molecule3))
-console.log(spliSimpleMoleculeToAtoms(molecule4))
+console.log(simpleSplitToAtomsNumbers(molecule1))
+console.log(simpleSplitToAtomsNumbers(molecule2))
+console.log(simpleSplitToAtomsNumbers(molecule3))
+console.log(simpleSplitToAtomsNumbers(molecule4))

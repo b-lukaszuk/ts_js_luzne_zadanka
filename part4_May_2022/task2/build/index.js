@@ -18,10 +18,10 @@ function splitAtomNumber(atomNum) {
     }
     let pattern = /([A-Z][a-z]*)|([0-9]*)/g;
     let result = atomNum.match(pattern);
-    return result ? result.filter(e => e !== "") : null;
+    return result ? result.filter(elt => elt !== "") : null;
 }
 function isNum(text) {
-    return /\d/.test(text);
+    return /^\d+$/.test(text);
 }
 function getMolecularMass(element, defaultMass = 0) {
     let result = elementsMasses.get(element);

@@ -12,13 +12,35 @@ function splitSimplMolecToAtomsNums(molecule) {
     let pattern = /([A-Z][a-z]*)([0-9]*)/g;
     return molecule.match(pattern);
 }
-function splitAtomNumbers(atomNum) {
+function splitAtomNumber(atomNum) {
     if (atomNum.length === 0) {
         return null;
     }
     let pattern = /([A-Z][a-z]*)|([0-9]*)/g;
     let result = atomNum.match(pattern);
     return result ? result.filter(e => e !== "") : null;
+}
+function isNum(text) {
+    return /\d/.test(text);
+}
+function getMolecularMass(element, defaultMass = 0) {
+    let result = elementMass.get(element);
+    return result ? result : defaultMass;
+}
+function calculateMassOfAtomNumber(atomNum) {
+    let mass = 0;
+    let parts = splitAtomNumber(atomNum);
+    if (parts) {
+        parts.forEach(p => {
+            if (isNum(p)) {
+                mass *= parseInt(p);
+            }
+            else {
+                mass = getMolecularMass(p);
+            }
+        });
+    }
+    return mass;
 }
 let molecule1 = "C6H12O6";
 let molecule2 = "H3PO4";
@@ -29,7 +51,6 @@ console.log(splitSimplMolecToAtomsNums(molecule2));
 console.log(splitSimplMolecToAtomsNums(molecule3));
 console.log(splitSimplMolecToAtomsNums(molecule4));
 console.log(splitSimplMolecToAtomsNums(""));
-console.log(splitAtomNumbers("C6"));
-console.log(splitAtomNumbers("Cl2"));
-console.log(splitAtomNumbers("H11"));
-console.log(splitAtomNumbers(""));
+console.log(calculateMassOfAtomNumber("C6"));
+console.log(calculateMassOfAtomNumber("Cl2"));
+console.log(calculateMassOfAtomNumber("H11"));

@@ -14,11 +14,35 @@ function splitSimplMolecToAtomsNums(molecule: string): RegExpMatchArray | null {
     return molecule.match(pattern);
 }
 
-function splitAtomNumbers(atomNum: string): string[] | null {
+function splitAtomNumber(atomNum: string): string[] | null {
     if (atomNum.length === 0) { return null; }
     let pattern: RegExp = /([A-Z][a-z]*)|([0-9]*)/g;
     let result: RegExpMatchArray | null = atomNum.match(pattern);
     return result ? result.filter(e => e !== "") : null;
+}
+
+function isNum(text: string): boolean {
+    return /\d/.test(text);
+}
+
+function getMolecularMass(element: string, defaultMass: number = 0): number {
+    let result: number | undefined = elementMass.get(element)
+    return result ? result : defaultMass;
+}
+
+function calculateMassOfAtomNumber(atomNum: string): number {
+    let mass: number = 0;
+    let parts: string[] | null = splitAtomNumber(atomNum);
+    if (parts) {
+        parts.forEach(p => {
+            if (isNum(p)) {
+                mass *= parseInt(p);
+            } else {
+                mass = getMolecularMass(p);
+            }
+        })
+    }
+    return mass;
 }
 
 let molecule1: string = "C6H12O6"
@@ -32,7 +56,6 @@ console.log(splitSimplMolecToAtomsNums(molecule3));
 console.log(splitSimplMolecToAtomsNums(molecule4));
 console.log(splitSimplMolecToAtomsNums(""));
 
-console.log(splitAtomNumbers("C6"));
-console.log(splitAtomNumbers("Cl2"));
-console.log(splitAtomNumbers("H11"));
-console.log(splitAtomNumbers(""));
+console.log(calculateMassOfAtomNumber("C6"));
+console.log(calculateMassOfAtomNumber("Cl2"));
+console.log(calculateMassOfAtomNumber("H11"));

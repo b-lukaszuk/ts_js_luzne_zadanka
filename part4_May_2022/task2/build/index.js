@@ -5,16 +5,15 @@ let elementMass = new Map();
 for (let i = 0; i < elements.length; i++) {
     elementMass.set(elements[i], molecularMasses[i]);
 }
-function simpleSplitToAtomsNumbers(molecule) {
+function splitSimplMolecToAtomsNums(molecule) {
     let pattern = /([A-Z][a-z]*)([0-9]*)/g;
-    let result = molecule.match(pattern);
-    return result;
+    return molecule.match(pattern);
 }
 let molecule1 = "C6H12O6";
 let molecule2 = "H3PO4";
 let molecule3 = "C9H11NO3";
 let molecule4 = "CaCl2";
-console.log(simpleSplitToAtomsNumbers(molecule1));
-console.log(simpleSplitToAtomsNumbers(molecule2));
-console.log(simpleSplitToAtomsNumbers(molecule3));
-console.log(simpleSplitToAtomsNumbers(molecule4));
+console.log(splitSimplMolecToAtomsNums(molecule1));
+console.log(splitSimplMolecToAtomsNums(molecule2));
+console.log(splitSimplMolecToAtomsNums(molecule3));
+console.log(splitSimplMolecToAtomsNums(molecule4));

@@ -79,7 +79,6 @@ function getParenthesisContent(molecule: string): string {
 function calculateMassWithParenthesis(molecule: string): number {
     let mass: number = 0;
     let parts: string[] | null = splitMolecWithParenthesis(molecule);
-    console.log(parts);
     if (parts) {
         parts.forEach(p => {
             if (isNum(p)) {
@@ -92,6 +91,23 @@ function calculateMassWithParenthesis(molecule: string): number {
     return mass;
 }
 
+// no nested parenthesis allowed
+function calculateMassOfComplicatedMolecule(formula: string): number {
+    let mass: number = 0;
+    let parts: string[] | null = splitComplicFormula(formula);
+    if (parts) {
+        parts.forEach(p => {
+            if (p.includes("(")) {
+                mass += calculateMassWithParenthesis(p);
+            } else {
+                mass += calculateMassOfSimpleMolecule(p);
+            }
+        })
+    }
+    return mass;
+}
+
+
 let molecule1: string = "C6H12O6";
 let molecule2: string = "H3PO4";
 let molecule3: string = "C9H11NO3";
@@ -99,12 +115,9 @@ let molecule4: string = "CaCl2";
 let molecule5: string = "Ca5(PO4)3OH";
 let molecule6: string = "Ca10(PO4)6(OH)2";
 
-console.log(molecule1, calculateMassOfSimpleMolecule(molecule1));
-console.log(molecule2, calculateMassOfSimpleMolecule(molecule2));
-console.log(molecule3, calculateMassOfSimpleMolecule(molecule3));
-console.log(molecule4, calculateMassOfSimpleMolecule(molecule4));
-
-console.log(splitComplicFormula(molecule5));
-console.log(splitComplicFormula(molecule6));
-console.log(splitMolecWithParenthesis("(PO4)61"));
-console.log(calculateMassWithParenthesis("(PO4)"));
+console.log(`${molecule1}:\t${calculateMassOfComplicatedMolecule(molecule1).toFixed(3)} [g/mol]`);
+console.log(`${molecule2}:\t${calculateMassOfComplicatedMolecule(molecule2).toFixed(3)} [g/mol]`);
+console.log(`${molecule3}:\t${calculateMassOfComplicatedMolecule(molecule3).toFixed(3)} [g/mol]`);
+console.log(`${molecule4}:\t${calculateMassOfComplicatedMolecule(molecule4).toFixed(3)} [g/mol]`);
+console.log(`${molecule5}:\t${calculateMassOfComplicatedMolecule(molecule5).toFixed(3)} [g/mol]`);
+console.log(`${molecule6}:\t${calculateMassOfComplicatedMolecule(molecule6).toFixed(3)} [g/mol]`);

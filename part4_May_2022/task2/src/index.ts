@@ -56,12 +56,55 @@ function calculateMassOfSimpleMolecule(molecule: string): number {
     return mass;
 }
 
+function splitComplicFormula(formula: string): RegExpMatchArray | null {
+    if (formula.length === 0) { return null; }
+    let pattern: RegExp = /\(.*?\)[0-9]*|([A-Z][a-z]*)([0-9]*)/g;
+    let result: RegExpMatchArray | null = formula.match(pattern);
+    return result ? result.filter(elt => elt !== "") : null;
+}
+
+function splitMolecWithParenthesis(molecule: string): RegExpMatchArray | null {
+    if (molecule.length === 0) { return null; }
+    let pattern: RegExp = /\((.*?)\)|(\d)*/g;
+    let result: RegExpMatchArray | null = molecule.match(pattern);
+    return result ? result.filter(elt => elt !== "") : null;
+}
+
+function getParenthesisContent(molecule: string): string {
+    let pattern: RegExp = /\(|\)/g;
+    return molecule.replace(pattern, "");
+}
+
+// no nested parenthesis allowed
+function calculateMassWithParenthesis(molecule: string): number {
+    let mass: number = 0;
+    let parts: string[] | null = splitMolecWithParenthesis(molecule);
+    console.log(parts);
+    if (parts) {
+        parts.forEach(p => {
+            if (isNum(p)) {
+                mass *= parseInt(p);
+            } else {
+                mass += calculateMassOfSimpleMolecule(getParenthesisContent(p));
+            }
+        })
+    }
+    return mass;
+}
+
 let molecule1: string = "C6H12O6";
 let molecule2: string = "H3PO4";
 let molecule3: string = "C9H11NO3";
 let molecule4: string = "CaCl2";
+let molecule5: string = "Ca5(PO4)3OH";
+let molecule6: string = "Ca10(PO4)6(OH)2";
 
 console.log(molecule1, calculateMassOfSimpleMolecule(molecule1));
 console.log(molecule2, calculateMassOfSimpleMolecule(molecule2));
 console.log(molecule3, calculateMassOfSimpleMolecule(molecule3));
 console.log(molecule4, calculateMassOfSimpleMolecule(molecule4));
+
+console.log(splitComplicFormula(molecule5));
+console.log(splitComplicFormula(molecule6));
+console.log(splitMolecWithParenthesis("(PO4)61"));
+console.log(calculateMassWithParenthesis("(PO4)"));

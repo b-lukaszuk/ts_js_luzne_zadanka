@@ -52,11 +52,54 @@ function calculateMassOfSimpleMolecule(molecule) {
     }
     return mass;
 }
+function splitComplicFormula(formula) {
+    if (formula.length === 0) {
+        return null;
+    }
+    let pattern = /\(.*?\)[0-9]*|([A-Z][a-z]*)([0-9]*)/g;
+    let result = formula.match(pattern);
+    return result ? result.filter(elt => elt !== "") : null;
+}
+function splitMolecWithParenthesis(molecule) {
+    if (molecule.length === 0) {
+        return null;
+    }
+    let pattern = /\((.*?)\)|(\d)*/g;
+    let result = molecule.match(pattern);
+    return result ? result.filter(elt => elt !== "") : null;
+}
+function getParenthesisContent(molecule) {
+    let pattern = /\(|\)/g;
+    return molecule.replace(pattern, "");
+}
+// no nested parenthesis allowed
+function calculateMassWithParenthesis(molecule) {
+    let mass = 0;
+    let parts = splitMolecWithParenthesis(molecule);
+    console.log(parts);
+    if (parts) {
+        parts.forEach(p => {
+            if (isNum(p)) {
+                mass *= parseInt(p);
+            }
+            else {
+                mass += calculateMassOfSimpleMolecule(getParenthesisContent(p));
+            }
+        });
+    }
+    return mass;
+}
 let molecule1 = "C6H12O6";
 let molecule2 = "H3PO4";
 let molecule3 = "C9H11NO3";
 let molecule4 = "CaCl2";
+let molecule5 = "Ca5(PO4)3OH";
+let molecule6 = "Ca10(PO4)6(OH)2";
 console.log(molecule1, calculateMassOfSimpleMolecule(molecule1));
 console.log(molecule2, calculateMassOfSimpleMolecule(molecule2));
 console.log(molecule3, calculateMassOfSimpleMolecule(molecule3));
 console.log(molecule4, calculateMassOfSimpleMolecule(molecule4));
+console.log(splitComplicFormula(molecule5));
+console.log(splitComplicFormula(molecule6));
+console.log(splitMolecWithParenthesis("(PO4)61"));
+console.log(calculateMassWithParenthesis("(PO4)"));

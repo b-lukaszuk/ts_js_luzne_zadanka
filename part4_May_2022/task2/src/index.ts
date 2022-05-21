@@ -9,13 +9,16 @@ for (let i = 0; i < elements.length; i++) {
 }
 
 function splitSimplMolecToAtomsNums(molecule: string): RegExpMatchArray | null {
+    if (molecule.length === 0) { return null; }
     let pattern: RegExp = /([A-Z][a-z]*)([0-9]*)/g;
     return molecule.match(pattern);
 }
 
-function splitAtomNumbers(atomNum: string): RegExpMatchArray | null {
+function splitAtomNumbers(atomNum: string): string[] | null {
+    if (atomNum.length === 0) { return null; }
     let pattern: RegExp = /([A-Z][a-z]*)|([0-9]*)/g;
-    return atomNum.match(pattern);
+    let result: RegExpMatchArray | null = atomNum.match(pattern);
+    return result ? result.filter(e => e !== "") : null;
 }
 
 let molecule1: string = "C6H12O6"
@@ -23,11 +26,13 @@ let molecule2: string = "H3PO4"
 let molecule3: string = "C9H11NO3"
 let molecule4: string = "CaCl2"
 
-console.log(splitSimplMolecToAtomsNums(molecule1))
-console.log(splitSimplMolecToAtomsNums(molecule2))
-console.log(splitSimplMolecToAtomsNums(molecule3))
-console.log(splitSimplMolecToAtomsNums(molecule4))
+console.log(splitSimplMolecToAtomsNums(molecule1));
+console.log(splitSimplMolecToAtomsNums(molecule2));
+console.log(splitSimplMolecToAtomsNums(molecule3));
+console.log(splitSimplMolecToAtomsNums(molecule4));
+console.log(splitSimplMolecToAtomsNums(""));
 
-console.log(splitAtomNumbers("C6"))
-console.log(splitAtomNumbers("Cl2"))
-console.log(splitAtomNumbers("H11"))
+console.log(splitAtomNumbers("C6"));
+console.log(splitAtomNumbers("Cl2"));
+console.log(splitAtomNumbers("H11"));
+console.log(splitAtomNumbers(""));

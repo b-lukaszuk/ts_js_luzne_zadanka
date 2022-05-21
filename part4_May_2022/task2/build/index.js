@@ -6,12 +6,19 @@ for (let i = 0; i < elements.length; i++) {
     elementMass.set(elements[i], molecularMasses[i]);
 }
 function splitSimplMolecToAtomsNums(molecule) {
+    if (molecule.length === 0) {
+        return null;
+    }
     let pattern = /([A-Z][a-z]*)([0-9]*)/g;
     return molecule.match(pattern);
 }
 function splitAtomNumbers(atomNum) {
+    if (atomNum.length === 0) {
+        return null;
+    }
     let pattern = /([A-Z][a-z]*)|([0-9]*)/g;
-    return atomNum.match(pattern);
+    let result = atomNum.match(pattern);
+    return result ? result.filter(e => e !== "") : null;
 }
 let molecule1 = "C6H12O6";
 let molecule2 = "H3PO4";
@@ -21,6 +28,8 @@ console.log(splitSimplMolecToAtomsNums(molecule1));
 console.log(splitSimplMolecToAtomsNums(molecule2));
 console.log(splitSimplMolecToAtomsNums(molecule3));
 console.log(splitSimplMolecToAtomsNums(molecule4));
+console.log(splitSimplMolecToAtomsNums(""));
 console.log(splitAtomNumbers("C6"));
 console.log(splitAtomNumbers("Cl2"));
 console.log(splitAtomNumbers("H11"));
+console.log(splitAtomNumbers(""));

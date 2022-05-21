@@ -42,15 +42,21 @@ function calculateMassOfAtomNumber(atomNum) {
     }
     return mass;
 }
+function calculateMassOfSimpleMolecule(molecule) {
+    let mass = 0;
+    let parts = splitSimplMolecToAtomsNums(molecule);
+    if (parts) {
+        parts.forEach(p => {
+            mass += calculateMassOfAtomNumber(p);
+        });
+    }
+    return mass;
+}
 let molecule1 = "C6H12O6";
 let molecule2 = "H3PO4";
 let molecule3 = "C9H11NO3";
 let molecule4 = "CaCl2";
-console.log(splitSimplMolecToAtomsNums(molecule1));
-console.log(splitSimplMolecToAtomsNums(molecule2));
-console.log(splitSimplMolecToAtomsNums(molecule3));
-console.log(splitSimplMolecToAtomsNums(molecule4));
-console.log(splitSimplMolecToAtomsNums(""));
-console.log(calculateMassOfAtomNumber("C6"));
-console.log(calculateMassOfAtomNumber("Cl2"));
-console.log(calculateMassOfAtomNumber("H11"));
+console.log(molecule1, calculateMassOfSimpleMolecule(molecule1));
+console.log(molecule2, calculateMassOfSimpleMolecule(molecule2));
+console.log(molecule3, calculateMassOfSimpleMolecule(molecule3));
+console.log(molecule4, calculateMassOfSimpleMolecule(molecule4));

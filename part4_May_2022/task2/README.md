@@ -28,6 +28,8 @@ Try to expand it to compute something a bit more difficult, like:
 
 Still, I created it for personal use and it should not be used by anyone else.
 
+NO GUARANTEE OF CORRECT CALCULATIONS/PERFORMANCE. DON'T USE IT OR USE IT AT YOUR OWN RISK.
+
 ## Running
 
 ```bash

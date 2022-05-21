@@ -9,6 +9,10 @@ function splitSimplMolecToAtomsNums(molecule) {
     let pattern = /([A-Z][a-z]*)([0-9]*)/g;
     return molecule.match(pattern);
 }
+function splitAtomNumbers(atomNum) {
+    let pattern = /([A-Z][a-z]*)|([0-9]*)/g;
+    return atomNum.match(pattern);
+}
 let molecule1 = "C6H12O6";
 let molecule2 = "H3PO4";
 let molecule3 = "C9H11NO3";
@@ -17,3 +21,6 @@ console.log(splitSimplMolecToAtomsNums(molecule1));
 console.log(splitSimplMolecToAtomsNums(molecule2));
 console.log(splitSimplMolecToAtomsNums(molecule3));
 console.log(splitSimplMolecToAtomsNums(molecule4));
+console.log(splitAtomNumbers("C6"));
+console.log(splitAtomNumbers("Cl2"));
+console.log(splitAtomNumbers("H11"));

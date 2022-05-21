@@ -7,3 +7,20 @@ let elementMass: Map<string, number> = new Map();
 for (let i = 0; i < elements.length; i++) {
     elementMass.set(elements[i], molecularMasses[i]);
 }
+
+let pattern: RegExp = /([A-Z][a-z]*)([0-9]*)/g;
+
+let molecule1: string = "C6H12O6"
+let molecule2: string = "H3PO4"
+let molecule3: string = "C9H11NO3"
+let molecule4: string = "CaCl2"
+
+let result1: RegExpMatchArray | null = molecule1.match(pattern)
+let result2: RegExpMatchArray | null = molecule2.match(pattern)
+let result3: RegExpMatchArray | null = molecule3.match(pattern)
+let result4: RegExpMatchArray | null = molecule4.match(pattern)
+
+console.log(result1)
+console.log(result2)
+console.log(result3)
+console.log(result4)

@@ -5,16 +5,16 @@ let elementMass = new Map();
 for (let i = 0; i < elements.length; i++) {
     elementMass.set(elements[i], molecularMasses[i]);
 }
-let pattern = /([A-Z][a-z]*)([0-9]*)/g;
+function spliSimpleMoleculeToAtoms(molecule) {
+    let pattern = /([A-Z][a-z]*)([0-9]*)/g;
+    let result = molecule.match(pattern);
+    return result;
+}
 let molecule1 = "C6H12O6";
 let molecule2 = "H3PO4";
 let molecule3 = "C9H11NO3";
 let molecule4 = "CaCl2";
-let result1 = molecule1.match(pattern);
-let result2 = molecule2.match(pattern);
-let result3 = molecule3.match(pattern);
-let result4 = molecule4.match(pattern);
-console.log(result1);
-console.log(result2);
-console.log(result3);
-console.log(result4);
+console.log(spliSimpleMoleculeToAtoms(molecule1));
+console.log(spliSimpleMoleculeToAtoms(molecule2));
+console.log(spliSimpleMoleculeToAtoms(molecule3));
+console.log(spliSimpleMoleculeToAtoms(molecule4));

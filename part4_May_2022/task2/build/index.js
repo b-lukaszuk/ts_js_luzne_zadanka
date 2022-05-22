@@ -69,8 +69,7 @@ function splitMolecWithParenthesis(molecule) {
     return result ? result.filter(elt => elt !== "") : null;
 }
 function getParenthesisContent(molecule) {
-    let pattern = /\(|\)/g;
-    return molecule.replace(pattern, "");
+    return molecule.replace(/\((.*)\)/, "$1");
 }
 // no nested parenthesis allowed
 function calculateMassWithParenthesis(molecule) {

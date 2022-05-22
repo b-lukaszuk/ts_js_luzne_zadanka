@@ -71,8 +71,7 @@ function splitMolecWithParenthesis(molecule: string): RegExpMatchArray | null {
 }
 
 function getParenthesisContent(molecule: string): string {
-    let pattern: RegExp = /\(|\)/g;
-    return molecule.replace(pattern, "");
+    return molecule.replace(/\((.*)\)/, "$1");
 }
 
 // no nested parenthesis allowed

@@ -1,0 +1,16 @@
+{
+  "name": "amino_acid_molecular_mass_calculator",
+  "version": "1.0.0",
+  "description": "simple calculator of molecular mass for amino acids",
+  "main": "./build/index.js",
+  "scripts": {
+    "start": "node ./build/index.js",
+    "start-dev": "./node_modules/.bin/nodemon ./build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bartlomiej Lukaszuk",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}

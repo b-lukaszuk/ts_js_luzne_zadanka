@@ -68,8 +68,10 @@ function splitMolecWithParenthesis(molecule) {
     let result = molecule.match(pattern);
     return result ? result.filter(elt => elt !== "") : null;
 }
+// removes external parenthesis and returns the content between ( and )
+// ignores stuff, i.e. \w, outside the external parenthesis
 function getParenthesisContent(molecule) {
-    return molecule.replace(/\((.*)\)/, "$1");
+    return molecule.replace(/(\w*)\((.*)\)(\w*)/, "$2");
 }
 // no nested parenthesis allowed
 function calculateMassWithParenthesis(molecule) {
@@ -115,3 +117,4 @@ console.log(`${molecule3}:\t${calculateMassOfComplicatedMolecule(molecule3).toFi
 console.log(`${molecule4}:\t${calculateMassOfComplicatedMolecule(molecule4).toFixed(3)} [g/mol]`);
 console.log(`${molecule5}:\t${calculateMassOfComplicatedMolecule(molecule5).toFixed(3)} [g/mol]`);
 console.log(`${molecule6}:\t${calculateMassOfComplicatedMolecule(molecule6).toFixed(3)} [g/mol]`);
+console.log(`tomek:\t${calculateMassOfComplicatedMolecule("tomek").toFixed(3)} [g/mol]`);

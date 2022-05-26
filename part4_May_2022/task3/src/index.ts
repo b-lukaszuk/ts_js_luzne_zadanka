@@ -15,4 +15,26 @@ function splitAAChainToAA(molecule: string): RegExpMatchArray | null {
     return molecule.split("");
 }
 
+function getMolecularMass(aminoAcid: string, defaultMass: number = NaN): number {
+    let result: number | undefined = aminoAcidMasses.get(aminoAcid);
+    return result ? result : defaultMass;
+}
+
+function calculateMass(molecule: string): number {
+    let mass: number = 0;
+    let parts: string[] | null = splitAAChainToAA(molecule);
+    if (parts) {
+        parts.forEach(p => mass += getMolecularMass(p))
+        // AA + AA -> peptide + water
+        mass -= (18.02 * (parts.length - 1));
+    }
+    return mass;
+}
+
+let calcitonin: string = "CSNLSTCVLGKLSQELHKLQTYPRTNTGSGTP";
+
 console.log(splitAAChainToAA("ABCD"));
+console.log(calculateMass("ABCD")); // should give NaN
+// https://pubchem.ncbi.nlm.nih.gov/compound/Calcitonin
+// should be: 3431.9
+console.log("calcitonin: ", calculateMass(calcitonin), "[g/mol]"); 

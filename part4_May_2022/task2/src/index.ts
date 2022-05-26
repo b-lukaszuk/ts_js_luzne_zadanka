@@ -25,7 +25,7 @@ function isNum(text: string): boolean {
     return /^\d+$/.test(text);
 }
 
-function getMolecularMass(element: string, defaultMass: number = 0): number {
+function getMolecularMass(element: string, defaultMass: number = NaN): number {
     let result: number | undefined = elementsMasses.get(element);
     return result ? result : defaultMass;
 }

@@ -23,7 +23,7 @@ function splitAtomNumber(atomNum) {
 function isNum(text) {
     return /^\d+$/.test(text);
 }
-function getMolecularMass(element, defaultMass = 0) {
+function getMolecularMass(element, defaultMass = NaN) {
     let result = elementsMasses.get(element);
     return result ? result : defaultMass;
 }

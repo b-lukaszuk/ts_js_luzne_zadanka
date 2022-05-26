@@ -9,3 +9,10 @@ let aminoAcidMasses: Map<string, number> = new Map();
 for (let i = 0; i < aminoAcids.length; i++) {
     aminoAcidMasses.set(aminoAcids[i], molecularMasses[i]);
 }
+
+function splitAAChainToAA(molecule: string): RegExpMatchArray | null {
+    if (molecule.length === 0) { return null; }
+    return molecule.split("");
+}
+
+console.log(splitAAChainToAA("ABCD"));

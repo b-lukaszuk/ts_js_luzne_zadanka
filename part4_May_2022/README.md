@@ -13,6 +13,8 @@
 
 [Go to: Table of contents](#table-of-contents)
 
+**PROJECT ABANDONED. LOST INTREST AFTER WRITING SNAKE WITH REACT -> SEE [HERE](HTTPS://GITHUB.COM/B-LUKASZUK/SNAKE_GAME)**
+
 My try on snake game with vanilla TS/JS.
 
 Explanation how to run TS modules to JS found [here](https://www.youtube.com/watch?v=EpOPR03z4Vw)

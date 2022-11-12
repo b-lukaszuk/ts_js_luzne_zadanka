@@ -1,6 +1,6 @@
 type List<T> = null | {
   value: T;
-  rest: List<T> | null;
+  rest: List<T>;
 };
 
 function prepend<T>(someVal: T, someList: List<T>): List<T> {

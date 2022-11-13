@@ -69,3 +69,9 @@ npm start # Ctrl-C stops the program
 Most likely I will just I will archive only the config files (`*.json`) and TS files (`*.ts`) from `/src/` folder.
 
 Although perhaps only the TS files (`*.ts`) from `/src/` folder will be included.
+
+# Additional info
+
+**Do użytku własnego, nie powinno być używane przez nikogo innego.**
+
+**For personal use only, should not be used by anyone else.**

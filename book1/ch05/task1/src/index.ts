@@ -4,13 +4,9 @@ function flatten2dArr<T>(arr2d: T[][]): T[] {
 
 // don't know why but arr1d and arr2d are printed as arr1d
 function toStringArr<T>(arr1dOrArr2d: T[], toArr2d: boolean = true) {
-  let result: string = '[';
-  for (let elt of arr1dOrArr2d) {
-    result += toArr2d ? '[' : '';
-    result += `${elt.toString()}`;
-    result += toArr2d ? '], ' : ', ';
-  }
-  return result.slice(0, -2) + ']';
+  let result: string = toArr2d ? '[[' : '[';
+  result += arr1dOrArr2d.join(toArr2d ? '], [' : ', ');
+  return result + (toArr2d ? ']]' : ']');
 }
 
 function main() {

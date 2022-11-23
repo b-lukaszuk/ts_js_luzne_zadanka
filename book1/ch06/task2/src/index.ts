@@ -2,9 +2,7 @@ class Group<T> {
   public static from<T>(elements: T[]): Group<T> {
     let result: Group<T> = new Group();
     for (const elt of elements) {
-      if (!result.has(elt)) {
-        result.add(elt);
-      }
+      result.add(elt);
     }
     return result;
   }

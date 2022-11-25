@@ -6,6 +6,7 @@
 
 1. [Task 1](#task-1)
 2. [Task 2](#task-2)
+3. [Task 3](#task-3)
 
 ---
 
@@ -38,3 +39,21 @@ Groups
 Write a class called `Group` (since `Set` is already taken). Like `Set`, it has `add`, `delete`, and `has` methods. Its constructor creates an empty group, `add` adds a value to the group (but only if it isn’t already a member), `delete` removes its argument from the group (if it was a member), and `has` returns a Boolean value indicating whether its argument is a member of the group.
 
 Give the class a static `from` method that takes an iterable object as argument and creates a group that contains all the values produced by iterating over it.
+
+# Task 3
+
+[Go to: Table of contents](#table-of-contents)
+
+## Title
+
+Iterable Groups
+
+## Description
+
+Make the `Group` class from the previous exercise iterable.
+
+[...]
+
+If you used an array to represent the group’s members, don’t just return the iterator created by calling the Symbol.iterator method on the array. That would work, but it defeats the purpose of this exercise.
+
+It is okay if your iterator behaves strangely when the group is modified during iteration.

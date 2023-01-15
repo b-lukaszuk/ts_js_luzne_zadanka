@@ -47,7 +47,7 @@ class Parcel {
     console.log('\n---Parcel---');
     console.log(`current location: ${this.place}`);
     console.log(`destination: ${this.address}`);
-    console.log('------------');
+    console.log('---Parcel---');
   }
 
   getCurrentLocation(): string {
@@ -82,9 +82,12 @@ class VillageState {
     return this.parcels;
   }
 
-  public printParcels(): void {
+  public printParcelsInfo(): void {
+    if (this.parcels.length === 0) {
+      console.log('No parcels available.');
+    }
     for (const parcel of this.parcels) {
-      console.log(parcel);
+      parcel.printInfo();
     }
   }
 
@@ -105,3 +108,22 @@ class VillageState {
     }
   }
 }
+
+let first = new VillageState(
+  'Post Office',
+  [new Parcel('Post Office', "Alice's House")],
+  roadsGraph
+);
+
+console.log("\n\n---Village's state--");
+console.log('Initial village state.');
+console.log(`Robot's location: ${first.getPlace()}`);
+console.log('Parcels in the village:');
+first.printParcelsInfo();
+
+console.log("\n\n---Village's state--");
+console.log("Moving robot to -Alice's House-");
+let next = first.move("Alice's House");
+console.log(`Robot's location: ${next.getPlace()}`);
+console.log('Parcels in the village:');
+next.printParcelsInfo();

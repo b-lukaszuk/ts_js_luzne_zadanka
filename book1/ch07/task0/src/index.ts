@@ -34,10 +34,30 @@ function buildGraph(edges: string[]): Map<string, string[]> {
   return graph;
 }
 
-type Parcel = {
-  place: string;
-  address: string;
-};
+class Parcel {
+  private place: string;
+  private address: string;
+
+  constructor(place: string, address: string) {
+    this.place = place;
+    this.address = address;
+  }
+
+  printInfo(): void {
+    console.log('\n---Parcel---');
+    console.log(`current location: ${this.place}`);
+    console.log(`destination: ${this.address}`);
+    console.log('------------');
+  }
+
+  getCurrentLocation(): string {
+    return this.place;
+  }
+
+  getDestination(): string {
+    return this.address;
+  }
+}
 
 class VillageState {
   private place: string;
@@ -62,23 +82,26 @@ class VillageState {
     return this.parcels;
   }
 
+  public printParcels(): void {
+    for (const parcel of this.parcels) {
+      console.log(parcel);
+    }
+  }
+
   public move(destination: string): VillageState {
     if (!this.roadGraph.has(destination)) {
       return this;
     } else {
       // moving parcels and robot to new destination
       let movedParcels: Parcel[] = this.parcels.map((parcel) => {
-        if (parcel.place != this.place) return parcel;
-        return { place: destination, address: parcel.address };
+        if (parcel.getCurrentLocation() != this.place) return parcel;
+        return new Parcel(destination, parcel.getDestination());
       });
       // delivering parcels if destination/place of location is eql to address
       movedParcels = movedParcels.filter(
-        (parcel) => parcel.place != parcel.address
+        (parcel) => parcel.getCurrentLocation() != parcel.getDestination()
       );
       return new VillageState(destination, movedParcels, this.roadGraph);
     }
   }
 }
-
-console.log(roadsGraph.has("Alice's House"));
-console.log(roadsGraph);

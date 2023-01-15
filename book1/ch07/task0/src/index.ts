@@ -16,11 +16,7 @@ const roads: string[] = [
   'Shop-Town Hall',
 ];
 
-function printRoads(roads: string[]): void {
-  for (const road of roads) {
-    console.log(road);
-  }
-}
+const roadsGraph = buildGraph(roads);
 
 function buildGraph(edges: string[]): Map<string, string> {
   let graph: Map<string, string> = new Map();
@@ -37,11 +33,41 @@ function buildGraph(edges: string[]): Map<string, string> {
   }
   return graph;
 }
-const roadsGraph = buildGraph(roads);
 
-console.log('---');
-console.log('Roads:');
-printRoads(roads);
-console.log('---');
-console.log('Graph: ');
-console.log(roadsGraph);
+type Parcel = {
+  place: string;
+  address: string;
+};
+
+class VillageState {
+  private place: string;
+  private parcels: Parcel[];
+  private roadGraph: Map<string, string>;
+
+  constructor(
+    place: string,
+    parcels: Parcel[],
+    roadGraph: Map<string, string>
+  ) {
+    this.place = place;
+    this.parcels = parcels;
+    this.roadGraph = roadGraph;
+  }
+
+  public move(destination: string): VillageState {
+    if (!this.roadGraph.has(destination)) {
+      return this;
+    } else {
+      // moving parcels and robot to new destination
+      let movedParcels: Parcel[] = this.parcels.map((parcel) => {
+        if (parcel.place != this.place) return parcel;
+        return { place: destination, address: parcel.address };
+      });
+      // delivering parcels if destination/place of location is eql to address
+      movedParcels = movedParcels.filter(
+        (parcel) => parcel.place != parcel.address
+      );
+      return new VillageState(destination, movedParcels, this.roadGraph);
+    }
+  }
+}

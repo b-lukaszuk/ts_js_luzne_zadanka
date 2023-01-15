@@ -91,7 +91,7 @@ class VillageState {
     }
   }
 
-  public move(destination: string): VillageState {
+  public moveRobot(destination: string): VillageState {
     if (!this.roadGraph.has(destination)) {
       return this;
     } else {
@@ -123,7 +123,7 @@ first.printParcelsInfo();
 
 console.log("\n\n---Village's state--");
 console.log("Moving robot to -Alice's House-");
-let next = first.move("Alice's House");
+let next = first.moveRobot("Alice's House");
 console.log(`Robot's location: ${next.getPlace()}`);
 console.log('Parcels in the village:');
 next.printParcelsInfo();

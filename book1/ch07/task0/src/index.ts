@@ -18,13 +18,13 @@ const roads: string[] = [
 
 const roadsGraph = buildGraph(roads);
 
-function buildGraph(edges: string[]): Map<string, string> {
-  let graph: Map<string, string> = new Map();
+function buildGraph(edges: string[]): Map<string, string[]> {
+  let graph: Map<string, string[]> = new Map();
   function addEdge(fromLocation: string, toLocation: string): void {
-    if (graph[fromLocation] == null) {
-      graph[fromLocation] = [toLocation];
+    if (graph.has(fromLocation)) {
+      graph.get(fromLocation).push(toLocation);
     } else {
-      graph[fromLocation].push(toLocation);
+      graph.set(fromLocation, [toLocation]);
     }
   }
   for (let [fromLocation, toLocation] of edges.map((r) => r.split('-'))) {
@@ -42,16 +42,24 @@ type Parcel = {
 class VillageState {
   private place: string;
   private parcels: Parcel[];
-  private roadGraph: Map<string, string>;
+  private roadGraph: Map<string, string[]>;
 
   constructor(
     place: string,
     parcels: Parcel[],
-    roadGraph: Map<string, string>
+    roadGraph: Map<string, string[]>
   ) {
     this.place = place;
     this.parcels = parcels;
     this.roadGraph = roadGraph;
+  }
+
+  public getPlace(): string {
+    return this.place;
+  }
+
+  public getParcels(): Parcel[] {
+    return this.parcels;
   }
 
   public move(destination: string): VillageState {
@@ -71,3 +79,6 @@ class VillageState {
     }
   }
 }
+
+console.log(roadsGraph.has("Alice's House"));
+console.log(roadsGraph);

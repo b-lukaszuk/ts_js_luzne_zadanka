@@ -9,11 +9,11 @@ const roads: string[] = [
   "Ernie's House-Grete's House",
   "Grete's House-Farm",
   "Grete's House-Shop",
-  'Marketplace-Farm',
-  'Marketplace-Post Office',
-  'Marketplace-Shop',
-  'Marketplace-Town Hall',
-  'Shop-Town Hall',
+  "Marketplace-Farm",
+  "Marketplace-Post Office",
+  "Marketplace-Shop",
+  "Marketplace-Town Hall",
+  "Shop-Town Hall",
 ];
 
 const roadsGraph = buildGraph(roads);
@@ -27,7 +27,7 @@ function buildGraph(edges: string[]): Map<string, string[]> {
       graph.set(fromLocation, [toLocation]);
     }
   }
-  for (let [fromLocation, toLocation] of edges.map((r) => r.split('-'))) {
+  for (let [fromLocation, toLocation] of edges.map((road) => road.split("-"))) {
     addEdge(fromLocation, toLocation);
     addEdge(toLocation, fromLocation);
   }
@@ -35,47 +35,47 @@ function buildGraph(edges: string[]): Map<string, string[]> {
 }
 
 class Parcel {
-  private place: string;
-  private address: string;
+  private curLocation: string;
+  private destination: string;
 
-  constructor(place: string, address: string) {
-    this.place = place;
-    this.address = address;
+  constructor(curLocation: string, destination: string) {
+    this.curLocation = curLocation;
+    this.destination = destination;
   }
 
   printInfo(): void {
-    console.log('\n---Parcel---');
-    console.log(`current location: ${this.place}`);
-    console.log(`destination: ${this.address}`);
-    console.log('---Parcel---');
+    console.log("\n---Parcel---");
+    console.log(`current location: ${this.curLocation}`);
+    console.log(`destination: ${this.destination}`);
+    console.log("---Parcel---");
   }
 
   getCurrentLocation(): string {
-    return this.place;
+    return this.curLocation;
   }
 
   getDestination(): string {
-    return this.address;
+    return this.destination;
   }
 }
 
 class VillageState {
-  private place: string;
+  private curRobotLocation: string;
   private parcels: Parcel[];
   private roadGraph: Map<string, string[]>;
 
   constructor(
-    place: string,
+    curRobotLocation: string,
     parcels: Parcel[],
     roadGraph: Map<string, string[]>
   ) {
-    this.place = place;
+    this.curRobotLocation = curRobotLocation;
     this.parcels = parcels;
     this.roadGraph = roadGraph;
   }
 
   public getPlace(): string {
-    return this.place;
+    return this.curRobotLocation;
   }
 
   public getParcels(): Parcel[] {
@@ -84,23 +84,27 @@ class VillageState {
 
   public printParcelsInfo(): void {
     if (this.parcels.length === 0) {
-      console.log('No parcels available.');
+      console.log("No parcels available.");
     }
-    for (const parcel of this.parcels) {
+    this.parcels.forEach((parcel) => {
       parcel.printInfo();
-    }
+    });
   }
 
   public moveRobot(destination: string): VillageState {
     if (!this.roadGraph.has(destination)) {
-      return this;
+      return this; // returns current state of the village
     } else {
       // moving parcels and robot to new destination
       let movedParcels: Parcel[] = this.parcels.map((parcel) => {
-        if (parcel.getCurrentLocation() != this.place) return parcel;
-        return new Parcel(destination, parcel.getDestination());
+        if (parcel.getCurrentLocation() != this.curRobotLocation) {
+          return parcel;
+        } else {
+          return new Parcel(destination, parcel.getDestination());
+        }
       });
-      // delivering parcels if destination/place of location is eql to address
+      // delivering parcels if destination/curRobotLocation of location is eql
+      // to address
       movedParcels = movedParcels.filter(
         (parcel) => parcel.getCurrentLocation() != parcel.getDestination()
       );
@@ -110,20 +114,20 @@ class VillageState {
 }
 
 let first = new VillageState(
-  'Post Office',
-  [new Parcel('Post Office', "Alice's House")],
+  "Post Office",
+  [new Parcel("Post Office", "Alice's House")],
   roadsGraph
 );
 
 console.log("\n\n---Village's state--");
-console.log('Initial village state.');
+console.log("Initial village state.");
 console.log(`Robot's location: ${first.getPlace()}`);
-console.log('Parcels in the village:');
+console.log("Parcels in the village:");
 first.printParcelsInfo();
 
 console.log("\n\n---Village's state--");
 console.log("Moving robot to -Alice's House-");
 let next = first.moveRobot("Alice's House");
 console.log(`Robot's location: ${next.getPlace()}`);
-console.log('Parcels in the village:');
+console.log("Parcels in the village:");
 next.printParcelsInfo();

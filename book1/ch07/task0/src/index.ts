@@ -9,11 +9,11 @@ const roads: string[] = [
   "Ernie's House-Grete's House",
   "Grete's House-Farm",
   "Grete's House-Shop",
-  "Marketplace-Farm",
-  "Marketplace-Post Office",
-  "Marketplace-Shop",
-  "Marketplace-Town Hall",
-  "Shop-Town Hall",
+  'Marketplace-Farm',
+  'Marketplace-Post Office',
+  'Marketplace-Shop',
+  'Marketplace-Town Hall',
+  'Shop-Town Hall',
 ];
 
 const roadsGraph = buildGraph(roads);
@@ -27,7 +27,7 @@ function buildGraph(edges: string[]): Map<string, string[]> {
       graph.set(fromLocation, [toLocation]);
     }
   }
-  for (let [fromLocation, toLocation] of edges.map((road) => road.split("-"))) {
+  for (let [fromLocation, toLocation] of edges.map((road) => road.split('-'))) {
     addEdge(fromLocation, toLocation);
     addEdge(toLocation, fromLocation);
   }
@@ -44,10 +44,10 @@ class Parcel {
   }
 
   printInfo(): void {
-    console.log("\n---Parcel---");
+    console.log('\n---Parcel---');
     console.log(`current location: ${this.curLocation}`);
     console.log(`destination: ${this.destination}`);
-    console.log("---Parcel---");
+    console.log('---Parcel---');
   }
 
   getCurrentLocation(): string {
@@ -84,50 +84,64 @@ class VillageState {
 
   public printParcelsInfo(): void {
     if (this.parcels.length === 0) {
-      console.log("No parcels available.");
+      console.log('No parcels available.');
     }
     this.parcels.forEach((parcel) => {
       parcel.printInfo();
     });
   }
 
-  public moveRobot(destination: string): VillageState {
-    if (!this.roadGraph.has(destination)) {
+  public moveParcels(parcels: Parcel[], moveWhere: string): Parcel[] {
+    return parcels.map((parcel) => {
+      // robot picks up and moves parcel with it
+      if (parcel.getCurrentLocation() === this.curRobotLocation) {
+        return new Parcel(moveWhere, parcel.getDestination());
+      } else {
+        return parcel;
+      }
+    });
+  }
+
+  public removeDeliveredParcels(parcels: Parcel[]): Parcel[] {
+    return parcels.filter(
+      (parcel) => parcel.getCurrentLocation() !== parcel.getDestination()
+    );
+  }
+
+  public moveRobot(newRobotLocation: string): VillageState {
+    if (!this.roadGraph.has(newRobotLocation)) {
       return this; // returns current state of the village
     } else {
-      // moving parcels and robot to new destination
-      let movedParcels: Parcel[] = this.parcels.map((parcel) => {
-        if (parcel.getCurrentLocation() != this.curRobotLocation) {
-          return parcel;
-        } else {
-          return new Parcel(destination, parcel.getDestination());
-        }
-      });
-      // delivering parcels if destination/curRobotLocation of location is eql
-      // to address
-      movedParcels = movedParcels.filter(
-        (parcel) => parcel.getCurrentLocation() != parcel.getDestination()
+      let movedParcels: Parcel[] = this.moveParcels(
+        this.parcels,
+        newRobotLocation
       );
-      return new VillageState(destination, movedParcels, this.roadGraph);
+      let undeliveredParcels: Parcel[] =
+        this.removeDeliveredParcels(movedParcels);
+      return new VillageState(
+        newRobotLocation,
+        undeliveredParcels,
+        this.roadGraph
+      );
     }
   }
 }
 
 let first = new VillageState(
-  "Post Office",
-  [new Parcel("Post Office", "Alice's House")],
+  'Post Office',
+  [new Parcel('Post Office', "Alice's House")],
   roadsGraph
 );
 
 console.log("\n\n---Village's state--");
-console.log("Initial village state.");
+console.log('Initial village state.');
 console.log(`Robot's location: ${first.getPlace()}`);
-console.log("Parcels in the village:");
+console.log('Parcels in the village:');
 first.printParcelsInfo();
 
 console.log("\n\n---Village's state--");
 console.log("Moving robot to -Alice's House-");
 let next = first.moveRobot("Alice's House");
 console.log(`Robot's location: ${next.getPlace()}`);
-console.log("Parcels in the village:");
+console.log('Parcels in the village:');
 next.printParcelsInfo();

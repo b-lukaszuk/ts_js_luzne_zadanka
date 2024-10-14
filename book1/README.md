@@ -14,61 +14,20 @@ Probably to solve a task I will use the following commands/settings.
 ## Project initialization
 
 ```bash
-npm init --yes
-# npm install --save-dev typescript # optional already installed globally
-npm install --save-dev tsc-watch
+deno init my_project
 ```
-
-## Config files
-
-exemplary `package.json` file in e.g. `./ch02/task1/` folder
-
-<pre>
-{
-  "name": "ch02",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc-watch --onsuccess \"node dist/index.js\""
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "tsc-watch": "ver.num.here",
-    "typescript": "ver.num.here"
-  }
-}
-</pre>
-
-exemplary `tscconfig.json` in e.g. `./ch02/task1/` folder
-
-<pre>
-{
-  "compilerOptions": {
-    "target": "es2015",
-    "outDir": "./dist",
-    "rootDir": "./src"
-  }
-}
-</pre>
 
 # Coding and Running code
 
-exemplary commands to start writing program
-
 ```bash
-mkdir src dist
-echo "console.log('Hello World.');" > ./src/index.ts
-code ./src & # opens ./src folder in vscode editor
-npm start # Ctrl-C stops the program
+deno run --watch main.ts
 ```
 
-Most likely I will just I will archive only the config files (`*.json`) and TS files (`*.ts`) from `/src/` folder.
+or
 
-Although perhaps only the TS files (`*.ts`) from `/src/` folder will be included.
+```bash
+deno task dev
+```
 
 # Additional info
 

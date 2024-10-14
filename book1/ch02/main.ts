@@ -37,3 +37,5 @@ function main() {
 }
 
 main();
+
+export { getChessBoardRow, getChessboard };

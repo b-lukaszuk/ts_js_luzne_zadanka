@@ -38,4 +38,4 @@ function main() {
 
 main();
 
-export { getChessBoardRow, getChessboard };
+export { getChessboard, getChessBoardRow };

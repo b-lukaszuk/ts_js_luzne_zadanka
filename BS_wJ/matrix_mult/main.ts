@@ -3,17 +3,41 @@ if (import.meta.main) {
   main();
 }
 
+function isMatrix(m: number[][]): boolean {
+  const nRows: number = m[0].length;
+  return m.every((row) => row.length === nRows);
+}
+
+function throwErrIfNotMatrix(m: number[][]) {
+  if (!isMatrix(m)) {
+    throw new Error("not a matrix");
+  }
+}
+
 // simple solution, perhaps even without tests and sanity tests, etc.
 // may or may not work correctly
 function getNrows(matrix: number[][]): number {
+  throwErrIfNotMatrix(matrix);
   return matrix.length;
 }
 
 function getNcols(matrix: number[][]): number {
+  throwErrIfNotMatrix(matrix);
   return matrix[0].length;
 }
 
+function areMatricesCompatibleForMult(m1: number[][], m2: number[][]): boolean {
+  return getNcols(m1) === getNrows(m2);
+}
+
+function throwErrIfNotSuitedForMult(m1: number[][], m2: number[][]) {
+  if (!areMatricesCompatibleForMult(m1, m2)) {
+    throw new Error("nCols(m1) must be equal nRows(m2)");
+  }
+}
+
 function getCol(matrix: number[][], colInd: number): number[] {
+  throwErrIfNotMatrix(matrix);
   const nRows: number = getNrows(matrix);
   const col: number[] = [];
   for (let i = 0; i < nRows; i++) {
@@ -23,6 +47,9 @@ function getCol(matrix: number[][], colInd: number): number[] {
 }
 
 function getDotProduct(row: number[], col: number[]): number[] {
+  if (row.length !== col.length) {
+    throw new Error("cannot compute dot product");
+  }
   const result: number[] = [];
   for (let i = 0; i < row.length; i++) {
     result.push(row[i] * col[i]);
@@ -31,10 +58,13 @@ function getDotProduct(row: number[], col: number[]): number[] {
 }
 
 function sum(arr: number[]): number {
-  return arr.reduce((acc, curVal) => acc + curVal);
+  return arr.reduce((acc, curVal) => acc + curVal, 0);
 }
 
 function mult(matrix1: number[][], matrix2: number[][]) {
+  throwErrIfNotMatrix(matrix1);
+  throwErrIfNotMatrix(matrix2);
+  throwErrIfNotSuitedForMult(matrix1, matrix2);
   const result: number[][] = [];
   for (let r = 0; r < getNrows(matrix1); r++) {
     result.push([]);
@@ -48,6 +78,7 @@ function mult(matrix1: number[][], matrix2: number[][]) {
 }
 
 function myPrint(matrix: number[][]) {
+  throwErrIfNotMatrix(matrix);
   for (let r = 0; r < matrix.length; r++) {
     let row: string = "";
     for (let c = 0; c < getNcols(matrix); c++) {

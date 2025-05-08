@@ -1,4 +1,4 @@
-import { assertEquals } from "@std/assert";
+import { assertEquals, assertThrows } from "@std/assert";
 import { mult } from "./main.ts";
 
 function areArraysEqual<A>(arr1: A[][], arr2: A[][]): boolean {
@@ -28,4 +28,13 @@ Deno.test(function basicEquals() {
   const e: number[][] = [[3, 4], [3, -2], [4, -2]];
   const f: number[][] = [[26, -20], [38, 6]];
   assertEquals(areArraysEqual(mult(d, e), f), true);
+});
+
+Deno.test(function basicErrors() {
+  const a: number[][] = [[1, 2], [1, 2, 3]];
+  const b: number[][] = [[1, 2, 3], [4, 5, 6]];
+  const c: number[][] = [[7, 8, 9], [7, 8, 9]];
+
+  assertThrows(() => mult(a, a));
+  assertThrows(() => mult(b, c));
 });

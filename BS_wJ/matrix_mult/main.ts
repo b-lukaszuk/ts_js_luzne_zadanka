@@ -3,6 +3,8 @@ if (import.meta.main) {
   main();
 }
 
+// simple solution, perhaps even without tests and sanity tests, etc.
+// may or may not work correctly
 function getNrows(matrix: number[][]): number {
   return matrix.length;
 }

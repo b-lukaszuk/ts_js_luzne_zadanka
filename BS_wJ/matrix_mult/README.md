@@ -8,6 +8,32 @@ The snippets/programs written at a whim, maybe modified, and used for educationa
 
 Write some functions for basic matrix multiplication as seen [here](https://b-lukaszuk.github.io/BS_wJ_eng/mat_multip.html).
 
+## Info
+
+Project initialized with [deno](https://deno.com/):
+
+``` shell
+deno init my_project
+```
+
+to be run with
+
+``` shell
+deno main.ts
+```
+
+tests to be run with
+
+``` shell
+deno test
+```
+
+code formatting to be run with
+
+``` shell
+deno fmt *ts
+```
+
 ## Caution note
 
 **The content of this folder may be incorrect, erroneous and/or harmful. Use it at Your own risk.**

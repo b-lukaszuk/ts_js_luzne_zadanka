@@ -45,6 +45,15 @@ Deno.test(function basicErrors() {
   assertThrows(() => mult(b, c));
 });
 
+Deno.test(function matrix2x2Equals() {
+  const a: number[][] = [[3, 7], [1, -4]];
+  const b: number[][] = [[-1, 3 / 2], [1, -1]];
+  assertEquals(get2x2determinant(a), -19);
+  assertEquals(get2x2determinantReciprocal(a), -1 / 19);
+  assertEquals(get2x2Swap(b), [[-1, -3 / 2], [-1, -1]]);
+  assertEquals(get2x2Inverse(b), [[2, 3], [2, 2]]);
+});
+
 Deno.test(function matrix2x2Errors() {
   const a: number[][] = [[1, 2, 3], [4, 5, 6]];
   const b: number[][] = [[7, 8], [7, 8, 9]];

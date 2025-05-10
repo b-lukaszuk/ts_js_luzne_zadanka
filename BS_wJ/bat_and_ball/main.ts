@@ -101,6 +101,39 @@ function throwErrIfNot2x2matrix(matrix: number[][]) {
 
 function get2x2determinant(matrix: number[][]): number {
   throwErrIfNotMatrix(matrix);
+  throwErrIfNot2x2matrix(matrix);
+  return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
+}
+
+function get2x2determinantReciprocal(matrix: number[][]): number {
+  throwErrIfNotMatrix(matrix);
+  throwErrIfNot2x2matrix(matrix);
+  return 1.0 / get2x2determinant(matrix);
+}
+
+function get2x2Swap(matrix: number[][]): number[][] {
+  throwErrIfNotMatrix(matrix);
+  throwErrIfNot2x2matrix(matrix);
+  const a: number = matrix[1][1];
+  const b: number = matrix[0][1] * -1.0;
+  const c: number = matrix[1][0] * -1.0;
+  const d: number = matrix[0][0];
+  return [[a, b], [c, d]];
+}
+
+function get2x2Inverse(matrix: number[][]): number[][] {
+  throwErrIfNotMatrix(matrix);
+  throwErrIfNot2x2matrix(matrix);
+  const detRec: number = get2x2determinantReciprocal(matrix);
+  const swap: number[][] = get2x2Swap(matrix);
+  const result: number[][] = [];
+  for (let r = 0; r < getNrows(swap); r++) {
+    result.push([]);
+    for (let c = 0; c < getNcols(swap); c++) {
+      result[r].push(detRec * swap[r][c]);
+    }
+  }
+  return result;
 }
 
 function printIntro() {
@@ -114,6 +147,20 @@ function printProblemDescription() {
   console.log("What is the price of the ball?\n");
 }
 
+function printSolution() {
+  const a: number[][] = [[1.0, 1.0], [1.0, -1.0]];
+  const b: number[][] = [[1.1], [1.0]];
+  console.log("inverse of:");
+  myPrint(a);
+  console.log("multiplied by:");
+  myPrint(b);
+  const result: number[][] = mult(get2x2Inverse(a), b);
+  console.log(
+    `tells us that, the bat = \$${result[0][0].toFixed(2)},`,
+    `the ball = \$${result[1][0].toFixed(2)}`,
+  );
+}
+
 function printOutro() {
   console.log("\nThat's all. Goodbye!");
 }
@@ -122,6 +169,7 @@ function main() {
   printIntro();
 
   printProblemDescription();
+  printSolution();
 
   printOutro();
 }

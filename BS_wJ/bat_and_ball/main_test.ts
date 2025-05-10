@@ -1,5 +1,11 @@
 import { assertEquals, assertThrows } from "@std/assert";
-import { mult } from "./main.ts";
+import {
+  get2x2determinant,
+  get2x2determinantReciprocal,
+  get2x2Inverse,
+  get2x2Swap,
+  mult,
+} from "./main.ts";
 
 function areArraysEqual<A>(arr1: A[][], arr2: A[][]): boolean {
   if (arr1.length !== arr2.length) {
@@ -37,4 +43,19 @@ Deno.test(function basicErrors() {
 
   assertThrows(() => mult(a, a));
   assertThrows(() => mult(b, c));
+});
+
+Deno.test(function matrix2x2Errors() {
+  const a: number[][] = [[1, 2, 3], [4, 5, 6]];
+  const b: number[][] = [[7, 8], [7, 8, 9]];
+
+  assertThrows(() => get2x2determinant(a));
+  assertThrows(() => get2x2determinantReciprocal(a));
+  assertThrows(() => get2x2Swap(a));
+  assertThrows(() => get2x2Inverse(a));
+
+  assertThrows(() => get2x2determinantReciprocal(b));
+  assertThrows(() => get2x2Swap(b));
+  assertThrows(() => get2x2Inverse(b));
+  assertThrows(() => get2x2Inverse(b));
 });

@@ -174,4 +174,10 @@ function main() {
   printOutro();
 }
 
-export { mult };
+export {
+  get2x2determinant,
+  get2x2determinantReciprocal,
+  get2x2Inverse,
+  get2x2Swap,
+  mult,
+};

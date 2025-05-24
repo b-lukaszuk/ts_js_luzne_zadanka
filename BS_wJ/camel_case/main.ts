@@ -69,3 +69,5 @@ function main() {
 
   printOutro();
 }
+
+export { changeToCamelCase, changeToSnakeCase };

@@ -1,8 +1,16 @@
+function throwIfErrNotPositive(n: number) {
+  if (n <= 0) {
+    throw new Error("the number must be >= 0");
+  }
+}
+
 class Cylinder {
   radius: number;
   height: number;
 
   constructor(r: number, h: number) {
+    throwIfErrNotPositive(r);
+    throwIfErrNotPositive(h);
     this.radius = r;
     this.height = h;
   }
@@ -78,3 +86,5 @@ function main() {
 if (import.meta.main) {
   main();
 }
+
+export { Cylinder };

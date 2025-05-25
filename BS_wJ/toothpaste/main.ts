@@ -87,4 +87,4 @@ if (import.meta.main) {
   main();
 }
 
-export { Cylinder };
+export { Cylinder, getRatios };

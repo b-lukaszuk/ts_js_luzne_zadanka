@@ -22,6 +22,12 @@ to be run with
 deno main.ts
 ```
 
+or
+
+``` shell
+deno task dev # in watch mode for main.ts
+```
+
 tests to be run with
 
 ``` shell

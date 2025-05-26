@@ -1,8 +1,3 @@
-// Learn more at https://docs.deno.com/runtime/manual/examples/module_metadata#concepts
-if (import.meta.main) {
-  main();
-}
-
 function isUppercase(letter: string): boolean {
   return letter == letter.toLocaleUpperCase();
 }
@@ -68,6 +63,11 @@ function main() {
   printExamples(snakes, changeToCamelCase);
 
   printOutro();
+}
+
+// Learn more at https://docs.deno.com/runtime/manual/examples/module_metadata#concepts
+if (import.meta.main) {
+  main();
 }
 
 export { changeToCamelCase, changeToSnakeCase };

@@ -1,8 +1,3 @@
-// Learn more at https://docs.deno.com/runtime/manual/examples/module_metadata#concepts
-if (import.meta.main) {
-  main();
-}
-
 function isMatrix(m: number[][]): boolean {
   const nRows: number = m[0].length;
   return m.every((row) => row.length === nRows);
@@ -127,6 +122,11 @@ function main() {
   printExample2();
 
   printOutro();
+}
+
+// Learn more at https://docs.deno.com/runtime/manual/examples/module_metadata#concepts
+if (import.meta.main) {
+  main();
 }
 
 export { mult };

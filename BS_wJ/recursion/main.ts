@@ -25,9 +25,11 @@ function printIntro() {
 }
 
 function printSolution() {
+  console.log("Factorial exmaples.");
   for (let i = 1; i < 10; i++) {
     console.log(`factorial(${i}) = ${recFactorial(i)}`);
   }
+  console.log("\nFibonacci exmaples.");
   let map = new Map();
   map.set(0, 0);
   map.set(1, 1);

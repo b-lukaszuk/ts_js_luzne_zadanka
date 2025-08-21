@@ -1,7 +1,3 @@
-function add(a: number, b: number): number {
-  return a + b;
-}
-
 function recFactorial(n: number): number {
   if (n < 1) {
     throw new Error("n must be greater than 0");
@@ -16,7 +12,7 @@ function recFib(n: number, lookup: Map<number, number>): number {
   if (!lookup.has(n)) {
     lookup.set(n, recFib(n - 2, lookup) + recFib(n - 1, lookup));
   }
-  return lookup.get(n);
+  return lookup.get(n)!;
 }
 
 function printIntro() {
@@ -55,4 +51,4 @@ if (import.meta.main) {
   main();
 }
 
-export { add };
+export { recFactorial, recFib };

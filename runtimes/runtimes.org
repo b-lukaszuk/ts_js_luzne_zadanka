@@ -1,0 +1,21 @@
+#+title: JS Runtimes
+
+* Deno
+
+** Info wiki
+
+https://en.wikipedia.org/wiki/Deno_(software)
+
+** Webpage
+
+https://deno.com/
+
+* Bun
+
+** Info wiki
+
+https://en.wikipedia.org/wiki/Bun_(software)
+
+** Webpage
+
+https://bun.com/
